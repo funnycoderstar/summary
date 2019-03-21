@@ -7,24 +7,24 @@
    * [垃圾回收机制](JavaScript/javascript垃圾回收机制.md)
 
 * JavaScript设计模式
- * [观看者模式](JavaScript设计模式/观察者模式模式.md)
+ * [观看者模式](JavaScript设计模式/观察者模式.md)
 * ES6
 
 *  CSS
     * [去除默认样式](CSS/去除默认样式.md)
-    * [less语法](CSS/less.md)
+    * [less语法](CSS/less语法.md)
     * [css布局之flex](CSS/css布局之flex.md)
     * [css常用布局](CSS/css常用布局.md)
 * React
     * [redux](React/redux.md)
 * Vue
-    * [vuex](Vue/vuex.md)
+    * [vuex](vue/vuex.md)
 * Node
    * [node的path模块](node/node-path.md)
    * [node的fs模块](node/node-fs.md)
    * [node定时器](node/node定时器.md)
    * [发布npm](node/npm-publish.md)
-   * [npm-scripts](node/node-scripts.md)
+   * [npm-scripts](node/npm-scripts.md)
    * [npm](node/npm.md)
    * [线程和进程](node/线程和进程.md)
    * [编写一个cli工具](node/编写一个cli工具.md)
@@ -42,5 +42,5 @@
 * 面试题
    * [18道JavaScript面试题](面试题/18道js笔试题.md)
 * 数据结构与算法
-   * [leetcode](https://github.com/funnycoderstar/leetcode)
+   * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
 
