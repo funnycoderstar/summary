@@ -1,0 +1,388 @@
+# 18道JavaScript面试题
+
+> 参考[这10道javaScript笔试题你都会么](http://www.cnblogs.com/zichi/p/4359786.html)
+>
+> ## 1,考察this
+>
+> \`\`\`js var length = 10; function fn\(\) { console.log\(this.length\); }
+
+var obj = { length: 5, method: function\(fn\) { fn\(\); arguments[0](18-dao-js-bi-shi-ti.md); } };
+
+obj.method\(fn, 1\);
+
+```text
+- 10 ，2
+- 第一次输出10应该没有问题。我们知道取对象属于除了点操作符还可以用中括号，所以第二次执行时相当于arguments调用方法，this指向arguments，而这里传了两个参数，故输出arguments长度为2。
+
+```js
+var length = 10;
+function fn() {
+  console.log(this.length);
+}
+
+var obj = {
+  length: 5,
+  method: function(fn) {
+    fn();
+    const fun = arguments[0];
+    fun()；
+  }
+};
+
+obj.method(fn, 1);
+```
+
+* 10 10
+
+  **2,var和函数的提前声明**
+
+```text
+function fn(a) {
+  console.log(a); 
+  var a = 2;
+  function a() {}
+  console.log(a); 
+}
+
+fn(1);
+```
+
+* function a\(\) {} 
+* 2
+* var和function是会提前声明的.而且function是优先于var声明的\(如果同时存在的话\),所以刚开始输出的就是一个funciton,接着往下执行a进行重新赋值了,故第二次输出的是2；
+
+## 3，局部变量和全局变量
+
+```text
+var f = true;
+if (f === true) {
+  var a = 10;
+}
+
+function fn() {
+  var b = 20;
+  c = 30;
+}
+
+fn();
+console.log(a);
+console.log(b);
+console.log(c);
+```
+
+* 输出 10 报错 30
+* 这是个我犯了很久的错误，很长一段时间我都以为{...}内的新声明的变量是局部变量，后来我才发现function内的新声明的变量才是局部变量，而没有用var声明的变量在哪里都是全局变量。再次提醒切记只有function\(\){}内新声明的才能是局部变量，while{...}、if{...}、for\(..\) 之内的都是全局变量（除非本身包含在function内）。
+
+## 4，变量隐式声明
+
+```text
+for( 'a' in window) {
+    var a = 10;
+}
+console.log(a);
+```
+
+* 10
+* funciton和var会提前声明,而其实{...}内的变量也会提前声明，于是代码还没执行前a已经被声明了。所以 ‘a’ in window会返回true,a被赋值
+
+## 5，给基本类型数据添加属性，不报错，但取值时是undefined
+
+```text
+var a = 10;
+a.pro = 10;
+console.log(a.pro + a);
+
+var s = 'hello';
+s.pro = 'world';
+console.log(s.pro + s);
+```
+
+* NaN undefinedhello
+* 给基本类型数据加属性不报错，但是引用的话返回undefined,10+undefined返回NaN,而undefined和string相加时转变成了字符串
+
+### 6，函数声明优先于变量声明
+
+```text
+console.log(typeof fn);
+function fn() {};
+var fn;
+```
+
+* function
+* 因为函数声明优于变量声明。我们知道在代码逐行执行前，函数声明和变量声明会提前进行，而函数声明又会优于变量声明，这里的优于可以理解为晚于变量声明后，如果函数名和变量名相同，函数声明就能覆盖变量声明。所以以上代码将函数声明和变量声明调换顺序还是一样结果。
+
+### 7,判断一个字符串中出现次数最多的字符，并统计次数
+
+```text
+var s = 'aaabbbcccaaabbbaaa';
+var obj = {};
+var letter;
+var maxn = -1;
+for (let i = 0; i< s.length; i++) {
+        if(obj[s[i]]) {
+            obj[s[i]] ++;
+            if(obj[s[i]] > maxn) {
+                maxn = obj[s[i]];
+                letter = s[i];
+            }
+        } else {
+            obj[s[i]] = 1;
+            if(obj[s[i]] > maxn) {
+                maxn = obj[s[i]];
+                letter = s[i];
+            }
+        }
+    }
+console.log(`${letter}:${maxn}`);
+```
+
+* 正则
+
+  ```text
+  var s = 'aaabbbcccaaabbbaaa';
+  var a = s.split('');
+  a.sort();
+  s = a.join('');
+  var pattern = /(\w)\1*/g;
+  var ans = s.match(pattern);
+  ans.sort(function(a, b) {
+    return a.length < b.length;
+  })
+  console.log(ans[0][0] + ':' + ans[0].length);
+  ```
+
+  **8，** [**经典闭包**](https://juejin.im/post/58f558efac502e006c3e5c97)\*\*\*\*
+
+```javascript
+<!--html-->
+<ul>
+    <li>这是第1个</li>
+    <li>这是第2个</li>
+    <li>这是第3个</li>
+    <li>这是第4个</li>
+</ul>
+
+<!--js-->
+<!--实现点击每一个分别弹出这是第x个  -->
+一：
+for(var i = 0; i < lis.length; i++) {
+    lis[i].index = i;
+    lis[i].onclick = function() {
+      alert(this.index);
+    };
+}
+二:
+for(var i = 0; i < lis.length; i++) {
+    (function(i) {
+      lis[i].onclick = function() {
+        alert(i);
+      };
+    })(i); 
+}
+三：
+for(let i = 0; i < lis.length; i++) {
+    lis[i].onclick = function() {
+    alert(i);
+    };
+}
+```
+
+* 从0开始隔10s按顺序出现'第一次出现','第二次出现','第三次出现‘
+
+  ```text
+  const datas = ['第一次出现', '第二次出现', '第三次出现'];
+  let timer = null;
+  for (let i = 0; i < datas.length; i++) {
+    //    const index = i;
+    if (timer) {
+        clearTimeout(timer);
+        let timer = setTimeout(function () {
+            console.log(datas[i]);
+        }, 10000 * i)
+    } else {
+        let timer = setTimeout(function () {
+            console.log(datas[i]);
+        }, 10000 * i)
+    }
+  };
+  ```
+
+  **9，请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象，如： var url = “**[**http://witmax.cn/index.php?key0=0&key1=1&key2=2″**](http://witmax.cn/index.php?key0=0&key1=1&key2=2″)\*\*\*\*
+
+```javascript
+function parseQueryString(url) {
+  var obj = {};
+  var a = url.split('?');
+  if(a.length === 1) return obj;
+  var b = a[1].split('&');
+  for(var i = 0, length = b.length; i < length; i++) {
+    var c = b[i].split('=');
+    obj[c[0]] = c[1];
+  }
+  return obj;
+}
+var url = 'http://witmax.cn/index.php?key0=0&key1=1&key2=2';
+var obj = parseQueryString(url);
+console.log(obj.key0, obj.key1, obj.key2);  // 0 1 2
+```
+
+### 10,考察this
+
+```javascript
+var baz=3;
+var bazz={
+   baz: 2,
+   getbaz: function() {
+         return this.baz;
+  }
+}
+console.log(bazz.getbaz())
+var g = bazz.getbaz;
+console.log(g());
+```
+
+* 2，3
+* 函数作为对象本身属性调用的时候this指向对象，作为普通函数调用的时候就指向全局了
+
+### 11，数组方法
+
+* 数组排序:写一个js函数,将数组对象按照一定的顺序进行排序，且可通过参数决定升降序
+
+```javascript
+const list = [
+    {
+        "name": "first",
+        "index": 1,
+    },
+    {
+        "name": "second",
+        "index": 2,
+    },
+    {
+        "name": "third",
+        "index": 3,
+    },
+    {
+        "name": "fourth",
+        "index": 4,
+    },
+]
+function compare(property){
+    return function(a,b){
+        return a[property] - a[property];
+    }
+}
+console.log(list.sort(compare('index')))
+```
+
+* sort\(\) 方法用于对数组的元素进行排序。
+* 语法：arrayObject.sort\(sortby\)；参数sortby可选。规定排序顺序。必须是函数。
+* 注：如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。
+
+  **12,求一个字符串的字节长度**
+
+  \`\`\`js
+
+  function GetBytes\(str\){
+
+  ```text
+    var len = str.length;
+    var bytes = len;
+    for(var i=0; i<len; i++){
+        if (str.charCodeAt(i) > 255) bytes++;
+    }
+    return bytes;
+  ```
+
+    }
+
+alert\(GetBytes\("你好,as"\)\); str = 'hello world'; console.log\(str.charCodeAt\(0\)\); // 104, 返回指定索引处字符的 Unicode 数值,大于255为中文 console.log\(str.charAt\(0\)\); // h, 返回指定位置的字符,
+
+\`\`\`
+
+## 13 jsonp原理及过程
+
+* 利用标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。
+* 当需要通讯时，本站脚本创建一个元素，地址指向第三方的API网址，形如 
+* 并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。
+* 第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback\({"name":"hax","gender":"Male"}\)这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。
+
+## 14, link和@import区别
+
+* link属于html标签，而@import是css提供的。
+* 页面被加载时，link会同时被加载，而@import引用的css会等到页面加载结束后加载。
+* link是html标签，因此没有兼容性，而@import只有IE5以上才能识别。
+* link方式样式的权重高于@import的
+
+## 15,一个页面从输入url到页面加载显示完成,这个过程都发生了什么?
+
+* 浏览器开启一个线程来处理这个请求
+* 2,查找浏览器缓存\(浏览器缓存-系统缓存-路由器缓存\)
+* 3,DNS解析,查找该域名对应的IP地址,重定向\(301\),
+* 4,向真实IP地址服务器发出tcp连接,tcp三次握手
+* 5,握手成功后,进行http协议会话,浏览器发送报头
+* 6,进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;
+* 7,进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;
+* 8,处理结束回馈报头，将数据返回至浏览器;
+* 9,浏览器开始下载html文档\(响应报头，状态码200\)，同时设置缓存;
+* 10,之后浏览器对整个 HTML 结构进行解析，形成 DOM 树；与此同时，它还需要对相应的 CSS 文件进行解析，形成 CSS 树（CSSOM）。
+* 11,得到绘制树之后，需要计算每个结点在页面中的位置，这一个过程称为layout 
+
+浏览器这边做的工作大致分为以下几步： 加载：根据请求的URL进行域名解析，向服务器发起请求，接收文件（HTML、JS、CSS、图象等）。 解析：对加载到的资源（HTML、JS、CSS等）进行语法解析，建议相应的内部数据结构（比如HTML的DOM树，JS的（对象）属性表，CSS的样式规则等等）
+
+## 16,TCP传输的三次握手四次挥手策略
+
+> 三次握手 SYN和ACK
+
+发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息。 最后，发送端再回传一个带ACK标志的数据包，代表“握手”结束。 若在握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包。
+
+> 四次挥手
+>
+> * 第一次挥手：主动关闭方发送一个FIN，用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我已经不 会再给你发数据了\(当然，在fin包之前发送出去的数据，如果没有收到对应的ack确认报文，主动关闭方依然会重发这些数据\)，但是，此时主动关闭方还可 以接受数据。
+> * 第二次挥手：被动关闭方收到FIN包后，发送一个ACK给对方，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号）。
+> * 第三次挥手：被动关闭方发送一个FIN，用来关闭被动关闭方到主动关闭方的数据传送，也就是告诉主动关闭方，我的数据也发送完了，不会再给你发数据了。
+> * 第四次挥手：主动关闭方收到FIN后，发送一个ACK给被动关闭方，确认序号为收到序号+1，至此，完成四次挥手。
+
+## 17, js原型,原型链,有什么特点
+
+## 18, [常见web安全问题及防御](http://blog.csdn.net/gongzhuxiaoxin/article/details/52417851)
+
+> sql注入原理及防范 就是通过把SQL命令插入web表单递交或输入域名或页面请求的查询字符串,最终达到欺骗服务器执行恶意的SQL命令
+>
+> * 1, 永远不要信任用户的输入,要对用户的输入进行校验,可以通过正则表达式,或限制长度,对单引号和双'-'进行转换等
+> * 2,永远不要使用动态拼装SQL，可以使用参数化的SQL或者直接使用存储过程进行数据查询存取。
+> * 3,永远不要使用管理员权限的数据库连接,为每个应用使用单独的权限有限的数据库连接;
+> * 4,不要把机密信息明文存放,或加密或者hash掉密码和敏感信息
+>
+>   XSS,跨站脚本攻击, 允许恶意web用户将代码植入到提供给其他用户使用的页面中,比如这些代码包括HTML代码和客户端脚本
+>
+>   比如：攻击者在论坛中放一个看似安全的链接，骗取用户点击后，窃取cookie中的用户私密信息；或者攻击者在论坛中加一个恶意表单，当用户提交表单的时候，却把信息传送到攻击者的服务器中，而不是用户原本以为的信任站点。
+>
+>   ![title](http://f.wetest.qq.com/gqop/20000/LabImage_7d48edafb0d49ff4c827f334e6029437.jpg/0?_=5741507)
+>
+> * 防御
+> * 1,首先代码里对用户输入的地方和变量都需要仔细检查长度个对”&lt;”,”&gt;”,”;”,”’”等字符做过滤;
+> * 2,其次任何内容写到页面之前都必须加以encode,避免吧小心把html tag弄出来
+> * 3,避免使用cookie中泄露用户隐私,例如email,密码等等
+> * 4,使用cookie和系统IP绑定来降低泄露后的危险.这样这样攻击者得到的cookie 没有实际价值，不可能拿来重放。
+> * 5,尽量采用POST而非GET提交表单
+>
+>   CSRF （Cross-site request forgery）即跨站伪造请求;
+>
+>   要完成一次CSRF攻击,受害者依次完成两个步骤:
+>
+> * 1,登录受信任网站A,并在本地生成Cookie,
+> * 2,在不登出A的情况,访问危险网站B
+>
+>   ![title](https://cupools.github.io/images/csrf-09-01.png)
+>
+>   防御:
+>
+>   从客户端和服务端两方面着手,一般在服务端着手效果比较好,现在一CSRF也在服务端;服务端的CSRF方式很多,但是总体思想就是在客户端页面增加随机数;
+>
+> * 1,Cookie Hashing\(所有表单都包含同一个伪随机值\)：这可能是最简单的解决方案了，因为攻击者不能获得第三方的Cookie\(理论上\)，所以表单中的数据也就构造失败了
+> * 2,验证码: 每次的用户提交都需要用户在表单中填写一个图片上的随机字符串,厄....这个方案可以完全解决CSRF，但个人觉得在易用性方面似乎不是太好，还有听闻是验证码图片的使用涉及了一个被称为MHTML的Bug，可能在某些版本的微软IE中受影响。
+> * 3,One-Time Tokens\(不同的表单包含一个不同的伪随机值\)
+>
+> XSS和CSRF的区别 XSS是获取信息,不需要提前知道其他用户页面的代码和数据包;CSRF是代替用户完成指定的动作,需要知道其他用户页面的代码和数据包 要完成一次CSRF攻击,受害者依次完成两个步骤: 1,登录受信任网站A,并在本地生成Cookie, 2,在不登出A的情况,访问危险网站B
+

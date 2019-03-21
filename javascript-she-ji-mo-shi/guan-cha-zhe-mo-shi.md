@@ -1,5 +1,6 @@
-# 一个简单的观察者模式例子
-```js
+# 观看者模式
+
+```javascript
 class Observer {
     constructor() {
         this.listener = new Map();
@@ -34,3 +35,4 @@ for (let i = 0; i < 5; i++) {
     ob.emit(i);
 }
 ```
+

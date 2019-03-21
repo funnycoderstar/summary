@@ -1,9 +1,10 @@
+# css常用布局
+
 ## 怎么实现两列布局
 
-left元素浮动
-right元素设置width: 100%,padding-left:left元素的宽度;
+left元素浮动 right元素设置width: 100%,padding-left:left元素的宽度;
 
-```html
+```markup
 <style>
     .wrap {
         width: 100%;
@@ -32,7 +33,8 @@ right元素设置width: 100%,padding-left:left元素的宽度;
 ## 块级元素垂直水平居中
 
 1.
-```html
+
+```markup
 <style>
     .container {
         width: 500px;
@@ -55,5 +57,6 @@ right元素设置width: 100%,padding-left:left元素的宽度;
     </div>
 </div>
 ```
+
 ## transform/ transition/ animation区别
 

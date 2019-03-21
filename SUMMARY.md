@@ -1,46 +1,43 @@
-# Summary
+# Table of contents
 
-*  [Introduction](README.md)
-
-* JavaScript
-   * [函数节流](JavaScript/函数节流.md)
-   * [垃圾回收机制](JavaScript/javascript垃圾回收机制.md)
-
-* JavaScript设计模式
- * [观看者模式](JavaScript设计模式/观察者模式.md)
-* ES6
-
-*  CSS
-    * [去除默认样式](CSS/去除默认样式.md)
-    * [less语法](CSS/less语法.md)
-    * [css布局之flex](CSS/css布局之flex.md)
-    * [css常用布局](CSS/css常用布局.md)
-* React
-    * [redux](React/redux.md)
-* Vue
-    * [vuex](vue/vuex.md)
-* Node
-   * [node的path模块](node/node-path.md)
-   * [node的fs模块](node/node-fs.md)
-   * [node定时器](node/node定时器.md)
-   * [发布npm](node/npm-publish.md)
-   * [npm-scripts](node/npm-scripts.md)
-   * [npm](node/npm.md)
-   * [线程和进程](node/线程和进程.md)
-   * [编写一个cli工具](node/编写一个cli工具.md)
-* 微信小程序
-* HTTP
-   * [http方法](HTTP/http方法.md)
-   * [http状态码](HTTP/http状态码.md)
-   * [http首部](HTTP/http首部.md)
-* Linux
-   * [bash](linux/bash.md)
-   * [vim](linux/vim.md)
-   * [文件](linux/文件.md)
-   * [目录管理](linux/目录管理.md)
-* Nginx
-* 面试题
-   * [18道JavaScript面试题](面试题/18道js笔试题.md)
-* 数据结构与算法
-   * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
+* [Introduction](README.md)
+* [JavaScript](javascript/README.md)
+  * [函数节流](javascript/han-shu-jie-liu.md)
+  * [垃圾回收机制](javascript/la-ji-hui-shou-ji-zhi.md)
+* [JavaScript设计模式](javascript-she-ji-mo-shi/README.md)
+  * [观看者模式](javascript-she-ji-mo-shi/guan-cha-zhe-mo-shi.md)
+* [ES6](es6.md)
+* [CSS](css/README.md)
+  * [去除默认样式](css/qu-chu-mo-ren-yang-shi.md)
+  * [less语法](css/less-yu-fa.md)
+  * [css布局之flex](css/css-bu-ju-zhi-flex.md)
+  * [css常用布局](css/css-chang-yong-bu-ju.md)
+* [React](react/README.md)
+  * [redux](react/redux.md)
+* [Vue](vue/README.md)
+  * [vuex](vue/vuex.md)
+* [Node](node/README.md)
+  * [node的path模块](node/node-path.md)
+  * [node的fs模块](node/node-fs.md)
+  * [node定时器](node/node-ding-shi-qi.md)
+  * [发布npm](node/npm-publish.md)
+  * [npm-scripts](node/npm-scripts.md)
+  * [npm](node/npm.md)
+  * [线程和进程](node/xian-cheng-he-jin-cheng.md)
+  * [编写一个cli工具](node/bian-xie-yi-ge-cli-gong-ju.md)
+* [微信小程序](wei-xin-xiao-cheng-xu.md)
+* [HTTP](http/README.md)
+  * [http方法](http/http-fang-fa.md)
+  * [http状态码](http/http-zhuang-tai-ma.md)
+  * [http首部](http/http-shou-bu.md)
+* [Linux](linux/README.md)
+  * [bash](linux/bash.md)
+  * [vim](linux/vim.md)
+  * [文件](linux/wen-jian.md)
+  * [目录管理](linux/mu-lu-guan-li.md)
+* [Nginx](nginx.md)
+* [面试题](mian-shi-ti/README.md)
+  * [18道JavaScript面试题](mian-shi-ti/18-dao-js-bi-shi-ti.md)
+* [数据结构与算法](shu-ju-jie-gou-yu-suan-fa/README.md)
+  * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
 
