@@ -7,7 +7,7 @@
    * [垃圾回收机制](JavaScript/javascript垃圾回收机制.md)
 
 * JavaScript设计模式
- * [观看者模式](JavaScript设计模式/观察者模式.md)
+ * [观察者模式](JavaScript设计模式/观察者模式.md)
 * ES6
 
 *  CSS

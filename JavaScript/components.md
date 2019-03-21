@@ -1,6 +1,7 @@
-css3动画基础
+## css3动画基础
 
-过渡:transition
+> transition
+
 元素从一种样式逐渐改变为另一种的效果;必须规定两项内容
 - 指定要添加效果的css属性
 - 指定效果的持续时间
@@ -12,7 +13,8 @@ css3动画基础
 - transition-timing-function: 规定过渡效果的时间曲线,默认 ease
 - transition-delay: 规定过渡效果何时开始.默认为0;
 
-动画: @keyframes
+> 动画: @keyframes
+
 @keyframes规则是创建动画.@keyframes规则内指定一个css样式和动画将逐步从目前的样式改为新的样式
 
 当在@keyframes创建动画,把它绑定到一个选择器,否则动画不会有任何效果;
@@ -35,9 +37,8 @@ css3动画基础
 - animation-direction: 动画是否在下一周期逆向地播放.默认是'normal';
 - animation-play-state: 规定动画是否正在运行或暂停,默认是'running'
 
-## 学习iview组件
 
-vue动画
+> vue动画
 
 ## 进入/离开 & 列表过渡
 
