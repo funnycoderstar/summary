@@ -1,5 +1,8 @@
-#### 1.实现input select去除默认样式的通用样式
-```js
+# 去除默认样式
+
+## 1.实现input select去除默认样式的通用样式
+
+```javascript
 select {
     width: 150px;
     /*复写Chrome和Firefox里面的边框*/
@@ -26,9 +29,9 @@ option:focus {
 }
 ```
 
-#### 2 改变下滑线颜色:
+## 2 改变下滑线颜色:
 
-```
+```text
 text-decoration: underline;
     -moz-text-decoration-color: #ff6c00;
     /* Code for Firefox */
@@ -36,8 +39,9 @@ text-decoration: underline;
 }
 ```
 
-#### 3.移动端的默认样式
-```
+## 3.移动端的默认样式
+
+```text
 div,
   a,
   img {
@@ -47,30 +51,36 @@ div,
     user-select: none;
   }
 ```
-#### 4.移动端隐藏scroll滚动条
 
-```
+## 4.移动端隐藏scroll滚动条
+
+```text
 ::-webkit-scrollbar {/*隐藏滚轮*/
 display: none;
 }
 ```
 
-#### 5.line-height: 150%; line-height: 1.5;
-```js
+## 5.line-height: 150%; line-height: 1.5;
+
+```javascript
 <div style="font-size: 12px">
     <span style="font-size: 24px">test</span>
 </div>
 ```
-```js
+
+```javascript
 div { line-height: 150%; } /* Computed line-height: 18px (150% * 12px) */
 span { }                   /* Computed line-height: 18px (inherited directly) *
 ```
-```js
+
+```javascript
 div { line-height: 1.5 }   /* Computed line-height: 18px (1.5 * 12px) */
 span { }                   /* Computed line-height: 36px (1.5 * 24px) */
 ```
-#### 5.消除`input`,`textarea`等的默认样式
-```js
+
+## 5.消除`input`,`textarea`等的默认样式
+
+```javascript
 input, button, select, textarea {
     outline: none;
     -webkit-appearance: none;
@@ -80,17 +90,22 @@ input, button, select, textarea {
 textarea{
     resize:none;
 }
-
 ```
-- `outline: none;`去掉chrome浏览器自带的点击input框出现边框情况
-- `-webkit-appearance: button;`使元素标签看起来像个按钮样式,意思定义了按钮样式
-  `-webkit-appearance: none;`去掉按钮样式
-- `border-radius: 0;` 去掉圆角
-  `border:0;` 去掉border
-- `textarea{resize:none}`取消chrome下textarea可拖动放大：
 
-#### 6.实现三角形
-```js
+* `outline: none;`去掉chrome浏览器自带的点击input框出现边框情况
+* `-webkit-appearance: button;`使元素标签看起来像个按钮样式,意思定义了按钮样式
+
+  `-webkit-appearance: none;`去掉按钮样式
+
+* `border-radius: 0;` 去掉圆角
+
+  `border:0;` 去掉border
+
+* `textarea{resize:none}`取消chrome下textarea可拖动放大：
+
+## 6.实现三角形
+
+```javascript
 <style>
 .triangle-up {
     width: 0;
@@ -120,11 +135,11 @@ textarea{
     border-left: 100px solid red;
     border-bottom: 50px solid transparent;
 }
- 
+
 </style>
 <div class='triangle-down'></div> <!--向下三角形-->
 <div class='triangle-up'></div> <!--向上三角形-->
 <div class='triangle-left'></div> <!--向左三角形-->
 <div class='triangle-right'></div> <!--向右三角形-->
-
 ```
+
