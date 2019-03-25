@@ -8,7 +8,6 @@
    - [垃圾回收机制](./JavaScript/javaScript垃圾回收机制.md)
 - [JavaScript设计模式](./JavaScript设计模式/)
     - [观察者模式](./JavaScript设计模式/观察者模式.js)
-- ES6
 - [CSS](./CSS/)
     - [去除默认样式](./CSS/去除默认样式.md)
     - [less语法](./CSS/less.md)
