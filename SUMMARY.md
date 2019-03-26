@@ -29,6 +29,7 @@
    * [npm](node/npm.md)
    * [线程和进程](node/线程和进程.md)
    * [编写一个cli工具](node/编写一个cli工具.md)
+   * [Node.js中package.json中库的版本号](node/npm-package-version.md)
 
 * 7.打包工具类
     * webapack
@@ -46,5 +47,6 @@
 * 10.面试题
    * [18道JavaScript面试题](面试题/18道js笔试题.md)
 * 11.数据结构与算法
+   * [javascript实现一个二叉搜索树](数据结构与算法/binarySearchTree.md)
    * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
 
