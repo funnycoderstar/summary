@@ -2,7 +2,6 @@
 
 *  [Introduction](README.md)
 
-
 *  1.CSS
     * [去除默认样式](CSS/去除默认样式.md)
     * [less语法](CSS/less语法.md)
@@ -12,6 +11,8 @@
 * 2.JavaScript
    * [函数节流](JavaScript/函数节流.md)
    * [垃圾回收机制](JavaScript/javascript垃圾回收机制.md)
+   * [浏览器渲染原理](Webkit/浏览器渲染原理.md)
+   * [Webkit的网页渲染过程](Webkit/webkit.md)
 
 * 3.JavaScript设计模式
  * [观察者模式](JavaScript设计模式/观察者模式.md)
@@ -30,7 +31,6 @@
    * [线程和进程](node/线程和进程.md)
    * [编写一个cli工具](node/编写一个cli工具.md)
    * [Node.js中package.json中库的版本号](node/npm-package-version.md)
-
 * 7.打包工具类
     * webapack
        * [webpack常见面试题](tool/webpack/webpack常见面试题.md)
