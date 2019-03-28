@@ -13,6 +13,7 @@
    * [垃圾回收机制](JavaScript/javascript垃圾回收机制.md)
    * [浏览器渲染原理](Webkit/浏览器渲染原理.md)
    * [Webkit的网页渲染过程](Webkit/webkit.md)
+   * [介绍模块化发展历程](JavaScript/module.md)
 
 * 3.JavaScript设计模式
  * [观察者模式](JavaScript设计模式/观察者模式.md)
