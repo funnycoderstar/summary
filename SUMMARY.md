@@ -9,7 +9,7 @@
     * [css常用布局](CSS/css常用布局.md)
     
 * 2.JavaScript
-   * [函数节流](JavaScript/函数节流.md)
+   * [函数节流](JavaScript/FunctionThrottling.md)
    * [垃圾回收机制](JavaScript/javascript垃圾回收机制.md)
    * [浏览器渲染原理](Webkit/浏览器渲染原理.md)
    * [Webkit的网页渲染过程](Webkit/webkit.md)
@@ -47,6 +47,7 @@
 
 * 10.面试题
    * [18道JavaScript面试题](面试题/18道js笔试题.md)
+   * [算法题][面试题/interiview.md]
 * 11.数据结构与算法
    * [javascript实现一个二叉搜索树](数据结构与算法/binarySearchTree.md)
    * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
