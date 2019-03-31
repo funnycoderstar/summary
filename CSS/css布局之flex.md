@@ -1,7 +1,7 @@
 ### 使用flex布局
 flex使用方法很简单,只需要将其display属性设置为flex即可,也可以设置行内的flex,记得webkit内核的浏览器,必须加上-webkit,
 - 注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
-```js
+```css
 .ele {
     display: -webkit-flex;
     diaplay: flex;
@@ -20,7 +20,7 @@ flex使用方法很简单,只需要将其display属性设置为flex即可,也可
 - align-content: 多根轴线的对齐方式
 #### flex-direciton属性
 flex-direction属性决定主轴的方向(主轴的方向不一定是水平的,这个属性就是设置主轴的方向,主轴默认是水平方向,从左至右)
-```
+```css
 .box {
     flex-direction: row;           // 默认值,主轴为水平方向,起点在左端,从左到右
     flex-direction: row-reverse;   // 主轴为水平方向,起点在右端,从右到左
@@ -30,7 +30,7 @@ flex-direction属性决定主轴的方向(主轴的方向不一定是水平的,�
 ```
 #### flex-wrap属性
 flex-wrap属性决定自容器如果在一条轴线排不下时,如何换行
-```
+```css
 .box {
     flex-wrap: nowrap;           // 默认,不换行
     flex-wrap: wrap;       // 换行,第一行在下面
@@ -47,14 +47,14 @@ flex-wrap属性决定自容器如果在一条轴线排不下时,如何换行
 
 #### order属性
 order属性定义子容器的排列顺序,数值越小,排列越靠前
-```
+```css
 item {
     order: <interger>
 }
 ```
 ### flex-grow属性
 flex-grow属性定义子容器的放大比例,默认为0
-```
+```css
 item {
     flex-grow: <number>; /* default 0 */
 }
@@ -63,7 +63,7 @@ item {
 
 ### flex-shrink属性
 flex-shrink定义了子容器的缩小比例,默认为1,如果空间不足,该项目将缩小
-```
+```css
 item {
     flex-shrink: <number>; /* default 1 */
 }
@@ -72,7 +72,7 @@ item {
 负值对该属性无效
 ### flex-basis属性
 flex-basis属性定义了在分配多余空间之前,项目占据了主轴空间,浏览器根据这个属性,计算主轴是否有多余空间.它的默认值为auto,即项目的本来大小;
-```
+```css
 item {
     flex-basis: <length> | auto; /* default auto */
 }
