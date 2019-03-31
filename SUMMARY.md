@@ -7,6 +7,8 @@
     * [less语法](CSS/less语法.md)
     * [css布局之flex](CSS/css布局之flex.md)
     * [css常用布局](CSS/css常用布局.md)
+    * [css自定义变量](CSS/css-variable.md)
+    * [怎么避免css相互覆盖呢?](CSS/cssModule.md)
     
 * 2.JavaScript
    * [函数节流](JavaScript/FunctionThrottling.md)
@@ -47,7 +49,7 @@
 
 * 10.面试题
    * [18道JavaScript面试题](面试题/18道js笔试题.md)
-   * [算法题][面试题/interiview.md]
+   * [算法题](面试题/interiview.md)
 * 11.数据结构与算法
    * [javascript实现一个二叉搜索树](数据结构与算法/binarySearchTree.md)
    * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
