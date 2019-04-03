@@ -9,6 +9,7 @@
     * [css常用布局](CSS/css常用布局.md)
     * [css自定义变量](CSS/css-variable.md)
     * [怎么避免css相互覆盖呢?](CSS/cssModule.md)
+    * [换肤功能](CSS/css-change-skin.md)
     
 * 2.JavaScript
    * [函数节流](JavaScript/FunctionThrottling.md)
@@ -16,9 +17,10 @@
    * [浏览器渲染原理](Webkit/浏览器渲染原理.md)
    * [Webkit的网页渲染过程](Webkit/webkit.md)
    * [介绍模块化发展历程](JavaScript/module.md)
+   * [实现一个promise](JavaScript/promise.md)
 
 * 3.JavaScript设计模式
- * [观察者模式](JavaScript设计模式/观察者模式.md)
+  * [观察者模式](JavaScript设计模式/观察者模式.md)
 
 * 4.React
     * [redux](React/redux.md)
