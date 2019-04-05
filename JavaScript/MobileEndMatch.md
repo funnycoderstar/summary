@@ -1,6 +1,6 @@
 > 移动端的适配问题 参考
 
-```
+```js
 function calcBaseRem () {
     const docEl = document.documentElement;
     const fontEl = document.querySelector('style');

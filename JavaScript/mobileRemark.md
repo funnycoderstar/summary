@@ -2,7 +2,7 @@
 
 - 1,如果我们需要将输入框固定在屏幕下方，而当键盘被唤起同时输入框固定在键盘上方
 
-```
+```js
 键盘会将页面顶上去。那么如果希望可以将输入框和键盘完全贴合，我们可以使用div模拟一个假的输入框，使用定位将真正的输入框隐藏掉，当点击假的输入框的时候，将真正的输入框定位到键盘上方，并且手动获取输入框焦点。
 
 1、真正的输入框的位置计算：
@@ -23,7 +23,7 @@ $('#textarea').css('height', $('#textarea')[0].scrollHeight);
 
 - 2,移动端虚拟键盘把fixed定位、绝对定位元素顶上去bug的解决方案(H5 web 移动端 输入框, 键盘唤起后fixed定位好的元素跟随页面滚动了起来… fixed属性失效了！满屏任性横飞)
 
-```
+```js
 window.onresize = function(e){
   if(e.target.outerHeight < $('body').height()){
     $('#bottom').css({'position':'static'});
