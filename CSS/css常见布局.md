@@ -10,7 +10,7 @@
 
 ## 水平垂直居中
 
-1. flex局部, 父元素设置 `display: flex;justify-content: center;align-items: center;`
+1. flex布局, 父元素设置 `display: flex;justify-content: center;align-items: center;`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,7 @@
 </body>
 </html>
 ```
-2. 使用定位
+2. 使用定位+`translate`
 ```html
 <style>
     .container {
@@ -59,6 +59,7 @@
         position: absolute;
         left: 250px;
         top: 250px;
+        /* translate是基于元素本身的宽高去计算百分比的，所以同样适用于宽度和高度都不固定的情况 */
         transform: translate(-50%, -50%);
         border: 1px solid green;
     }
@@ -69,7 +70,42 @@
     </div>
 </div>
 ```
-
+3. 使用定位
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: relative;
+        }
+        .center {
+            width: 100px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="center"></div>
+    </div>
+</body>
+</html>
+```
 ## 两列布局
 ### 左边宽度固定, 右边宽度自适应
 
