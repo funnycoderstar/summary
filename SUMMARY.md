@@ -6,7 +6,7 @@
     * [去除默认样式](CSS/去除默认样式.md)
     * [less语法](CSS/less语法.md)
     * [css布局之flex](CSS/css布局之flex.md)
-    * [css常用布局](CSS/css常用布局.md)
+    * [css常见布局](CSS/css常见布局.md)
     * [css自定义变量](CSS/css-variable.md)
     * [怎么避免css相互覆盖呢?](CSS/cssModule.md)
     * [换肤功能](CSS/css-change-skin.md)
@@ -19,6 +19,7 @@
    * [介绍模块化发展历程](JavaScript/module.md)
    * [实现一个promise](JavaScript/promise.md)
    * [常见的格式化时间的](JavaScript/date.md)
+   * [函数柯里化](JavaScript/Function_curry.md)
 
 * 3.JavaScript设计模式
   * [观察者模式](JavaScript设计模式/观察者模式.md)
