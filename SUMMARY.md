@@ -27,6 +27,7 @@
     * [redux](React/redux.md)
 * 5.Vue
     * [vuex](vue/vuex.md)
+    * [vue-router的常见用法](vue/vue-router.md)
 * 6.Node
    * [node的path模块](node/node-path.md)
    * [node的fs模块](node/node-fs.md)
@@ -37,23 +38,29 @@
    * [线程和进程](node/线程和进程.md)
    * [编写一个cli工具](node/编写一个cli工具.md)
    * [Node.js中package.json中库的版本号](node/npm-package-version.md)
-* 7.打包工具类
-    * webapack
-       * [webpack常见面试题](tool/webpack/webpack常见面试题.md)
-* 8.HTTP
+* 7.HTTP
    * [http方法](HTTP/http方法.md)
    * [http状态码](HTTP/http状态码.md)
    * [http首部](HTTP/http首部.md)
-* 9.Linux
+
+* 8.Linux
    * [bash](linux/bash.md)
    * [vim](linux/vim.md)
    * [文件](linux/文件.md)
    * [目录管理](linux/目录管理.md)
 
-* 10.面试题
-   * [18道JavaScript面试题](面试题/18道js笔试题.md)
-   * [算法题](面试题/interiview.md)
-* 11.数据结构与算法
+* 9.工具类
+    * webapack
+       * [webpack常见面试题](tool/webpack/webpack常见面试题.md)
+    * [移动端调试方法](tool/app_debug.md)
+    * [工具文档](tool/good_tool.md)
+
+* 10.数据结构与算法
    * [javascript实现一个二叉搜索树](数据结构与算法/binarySearchTree.md)
    * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
+
+* 11.面试题
+   * [18道JavaScript面试题](面试题/18道js笔试题.md)
+   * [算法题](面试题/interiview.md)
+
 
