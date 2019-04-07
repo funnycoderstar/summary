@@ -18,6 +18,7 @@
    * [Webkit的网页渲染过程](Webkit/webkit.md)
    * [介绍模块化发展历程](JavaScript/module.md)
    * [实现一个promise](JavaScript/promise.md)
+   * [常见的格式化时间的](JavaScript/date.md)
 
 * 3.JavaScript设计模式
   * [观察者模式](JavaScript设计模式/观察者模式.md)
