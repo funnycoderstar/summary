@@ -1,5 +1,5 @@
 # 前端学习总结
-> 该总结大多都是平常遇到的问题的积累。[链接](https://wangyaxing.gitbook.io/front-end-summary/)
+> 该总结大多都是平常遇到的问题的积累。[gitbook链接](https://wangyaxing.gitbook.io/front-end-summary/)
 
 主要分为以下几个方面：
 1. CSS

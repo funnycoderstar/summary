@@ -43,10 +43,4 @@ let it = print();
 it.next();
 it.next();
 it.next();
-
-var a  = ?;
-if(a == 1 && a == 2 && a == 3) {
-    console.log(1);
-}
-
 // co是Generator执行器
