@@ -156,7 +156,13 @@ module.exports = {
 CSS Modules允许使用 :global\(.className\)语法，声明一个全局规则。凡是这样声明的class,都不会被编译成哈希字符串
 
 ```css
+.title {
+  color: red;
+}
 
+:global(.title) {
+  color: green;
+}
 ```
 
 #### 2. 定义哈希类型
