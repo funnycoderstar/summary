@@ -1,13 +1,11 @@
-
-## less语法
-
-- [less](http://lesscss.cn/features/#parent-selectors-feature)
+## [less](http://lesscss.cn/features/#parent-selectors-feature)
 
 ## 变量既可以当做css属性的值,也可以用过选择器名称,属性名称,url和@import语句
-- 作为选择器名称
-```less
-@button-prefix: ~'test-button';
 
+作为选择器名称
+
+```js
+@button-prefix: ~'test-button';
 @{button-prefix} {
     font-weight: bold;
     line-height: 40px;
@@ -18,8 +16,10 @@
     line-height: 40px;
 }
 ```
-- 作为属性名称
-```less
+
+作为属性名称
+
+```css
 @property: 'color';
 
 .test-button {
@@ -34,10 +34,12 @@
 ```
 
 ## less的转义
-有些转义字符需要加上`~`使用的时候才不会被转义
-在将LESS代码编译为CSS代码之后，〜“some_text"中的任何内容将显示为 some_text 。
+
+有些转义字符需要加上`~`使用的时候才不会被转义  
+在将LESS代码编译为CSS代码之后，〜“some\_text"中的任何内容将显示为 some\_text 。
 
 ## 引用父选择器 `&`
+
 1.修改类或伪类
 
 ```less
@@ -56,6 +58,7 @@ a:hover {
     color: red;
 }
 ```
+
 2.产生重复的类名称
 
 ```less
@@ -81,7 +84,8 @@ a:hover {
   background-image: url("custom.png");
 }
 ```
-3.多`&` 
+
+3.多`&`   
 重复引用父选择器而不重复其名称
 
 ```less
@@ -117,3 +121,6 @@ a:hover {
     color: cyan;
 }
 ```
+
+
+
