@@ -6,4 +6,8 @@ git revert
 
 git reset
 
+git 怎么追加commit
+git commit –amend
+
+
 

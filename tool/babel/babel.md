@@ -110,3 +110,8 @@ https://www.babeljs.cn/docs/plugins/preset-env/
 
 babel-plugin-transform-runtime
 babel-plugin-syntax-dynamic-import
+
+## babel编译过程和编译原理
+
+抽象语法树
+- 先转成AST

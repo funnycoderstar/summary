@@ -1,8 +1,3 @@
----
-title: webpack中html-webpack-plugin的使用
-date: 2018-01-17 20:04:35
-tags: 
----
 ## 引言
 `html-webpack-plugin`是webpack的一个插件,目前用到改插件的两个作用:
 - 为html文件中引入的外部资源文件`script`, `link`动态添加compile后的hash,放在引用缓存的外部文件问题
