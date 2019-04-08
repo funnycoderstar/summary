@@ -1,5 +1,8 @@
+## [路径总和](https://www.jianshu.com/p/f23b061c229a)
 
-# 实现一个find(obj, target)
+## [买卖股票的最佳时机](https://www.jianshu.com/p/dd8adde07dfe)
+
+## 实现一个find(obj, target)
 ```js
 var obj = {
     key1: 'str1',
@@ -65,4 +68,3 @@ function foo() {
 }
 console.log(foo()); // d: 6
 ```
-## 
