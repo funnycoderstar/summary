@@ -29,6 +29,7 @@
 * 5.Vue
     * [vuex](vue/vuex.md)
     * [vue-router的常见用法](vue/vue-router.md)
+    * [vue3.0中的proxy](vue/vue-proxy.md)
 * 6.Node
    * [node的path模块](node/node-path.md)
    * [node的fs模块](node/node-fs.md)
