@@ -12,7 +12,7 @@
     * [换肤功能](CSS/css-change-skin.md)
     
 * 2.JavaScript
-   * [函数节流](JavaScript/FunctionThrottling.md)
+   * [函数节流和函数防抖](JavaScript/Throttling&&Debounce.md)
    * [垃圾回收机制](JavaScript/javascript垃圾回收机制.md)
    * [浏览器渲染原理](Webkit/浏览器渲染原理.md)
    * [Webkit的网页渲染过程](Webkit/webkit.md)
