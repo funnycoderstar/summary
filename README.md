@@ -3,15 +3,25 @@
 
 主要分为以下几个方面：
 1. CSS
+
 2. JavaScript
+
 3. JavaScript设计模式
+
 4. React
+
 5. Vue
+
 6. Node
+
 7. 工具类
+
 8. HTTP
+
 9. Linux
+
 10. 数据结构与算法
+
 11. 面试题
 
 # AboutMe

@@ -26,6 +26,9 @@ static：静态属性指的是 Class 本身的属性，即Class.propName，而�
 
 
 ## 实现一个promise
+### Promise简介
+要想自己实现一个Promise，我们首先要对Promise的用法有所了解
+
 ### 代码实现
 ```js
 class Promise {
@@ -147,7 +150,7 @@ class Promise {
 }
 ```
 ### 测试用例
-1. Promise.then
+#### 1. Promise.then
 
 ```js
 const p = new Promise((resolve, reject) => {
@@ -168,14 +171,16 @@ p.then(data => {
     console.error('err', err);
 });
 ```
-2. Promise.reject
+
+#### 2. Promise.reject
 ```js
 const p1 = Promise.reject('出错了');
 p1.then(null, function (s) {
     console.log(s); // 出错了
 });
 ```
-3. Promise.all && Promise.race
+
+#### 3. Promise.all && Promise.race
 ```js
 const q1 = new Promise((resolve, reject) => {
     resolve('hello')
