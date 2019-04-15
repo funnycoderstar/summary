@@ -6,7 +6,7 @@
     * [去除默认样式](CSS/去除默认样式.md)
     * [less语法](CSS/less语法.md)
     * [css布局之flex](CSS/css布局之flex.md)
-    * [css常见居中布局](CSS/css常见布局.md)
+    * [css常见布局](CSS/css常见布局.md)
     * [css自定义变量](CSS/css-variable.md)
     * [怎么避免css相互覆盖呢?](CSS/cssModule.md)
     * [换肤功能](CSS/css-change-skin.md)
