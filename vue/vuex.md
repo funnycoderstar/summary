@@ -189,7 +189,7 @@ const store = new Vuex.Store({
 
 # 需要注意的点
 
-## 默认情况下,模块内的getter, mutation,action是注册在全局空间的,state只注册在局部命名空间的;
+## 1、默认情况下,模块内的getter, mutation,action是注册在全局空间的,state只注册在局部命名空间的;
 要想使模块内的getter, mutation,action注册在模块命名空间,必须在模块内加上 namespaced: true
 
 ![未使用命名空间](http://cdn.wangyaxing.top/vuex1.jpeg)
@@ -209,7 +209,105 @@ const store = new Vuex.Store({
   [参考链接](https://stackoverflow.com/questions/41833424/how-to-access-vuex-module-getters-and-mutations)
 
 
-## 页面刷新时,store中的数据会清空
+## 2、页面刷新时,store中的数据会清空
 
 解决方案
 https://stackoverflow.com/questions/43027499/vuex-state-on-page-refresh
+
+## 3、双向绑定(v-model)和 vuex 是否冲突
+
+```html
+<template>
+<div >
+    <input type="text" v-model="obj.message">
+</div>
+</template>
+
+<script>
+export default {
+    computed: {
+        obj() {
+            return this.$store.state.test.obj;
+        },
+    },
+}
+</script>
+```
+test.js
+```js
+import Vue from 'vue';
+const test = {
+    state: {
+        obj: {}
+    },
+    mutations: {
+        updateMessage(state, message) {
+            state.obj = { message };
+        }
+    },
+}
+export default test;
+```
+
+
+以上代码在严格模式下会报错
+![vuexError](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555385416459.png?width=1788&height=220&imageView2/3/w/537/h/66)
+
+[vuex开启严格模式](https://vuex.vuejs.org/zh/guide/strict.html), 仅需要在创建store的时候传入 `strict: true`
+```js
+const store = new Vuex.Store({
+  // ...
+  strict: true
+})
+```
+在严格模式下, 无论何时发生了状态变更且且不是由mutation函数引起的, 经会抛出错误, 这能保证所有的状态变更都能被调试工具跟踪到;
+
+那我们应该怎么处理呢, vuex的官方文档中给给了解决方法: [表单处理](https://vuex.vuejs.org/zh/guide/forms.html)
+1. 给 <input> 中绑定 value，然后侦听 input 或者 change 事件，在事件回调中调用 action:
+
+```html
+<template>
+<div >
+    <input type="text" :value="message" @input="updateMessage">
+</div>
+</template>
+
+<script>
+export default {
+    computed: {
+        message(){
+            return this.$store.state.test.obj.message;
+        },
+    },
+    methods: {
+        updateMessage(e) {
+            this.$store.commit('updateMessage', e.target.value)
+        },
+    }
+}
+</script>
+
+```
+2. 双向绑定的计算属性: v-model + 使用带有 setter 的双向绑定计算属性
+```html
+<template>
+<div >
+    <input type="text" v-model="message">
+</div>
+</template>
+
+<script>
+export default {
+    computed: {
+        message: {
+            get() {
+                return this.$store.state.test.obj.message;
+            },
+            set(value) {
+                this.$store.commit('updateMessage', value)
+            }
+        },
+    },
+}
+</script>
+```
