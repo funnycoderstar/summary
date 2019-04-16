@@ -1,10 +1,12 @@
 # 以下代码会输出什么
-
+1.
 ```js
-// 1.
 const a = ['1', '2', '3'].map(parseInt);
+console.log(a);
+```
 
-// 2.
+2.
+```js
 function fn() {
     return 20;
 }
@@ -19,8 +21,10 @@ fn.valueOf = function() {
     return 5;
 }
 console.log(fn + 10); // 输出结果是多少?
+```
 
-// 3.
+3.
+```js
 var a = 10;
 (function () {
     console.log(a)
@@ -29,8 +33,10 @@ var a = 10;
     var a = 20;
     console.log(a);
 })()
+```
 
-// 4.
+4.
+```js
 var obj = {
     '2': 3,
     '3': 4,
@@ -41,9 +47,10 @@ var obj = {
 obj.push(1)
 obj.push(2)
 console.log(obj);
+```
 
-// 5.
-
+5.
+```js
 var a = {n: 1};
 var b = a;
 a.x = a = {n: 2};
