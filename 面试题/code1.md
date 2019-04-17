@@ -1,22 +1,23 @@
 # 题目
-1.实现 (5).add(3).minus(2) 功能
+- 1.实现 (5).add(3).minus(2) 功能
+- 2.下面代码中 a 在什么情况下会打印 1？
+    ```js
+        var a = ?;
+        if(a == 1 && a == 2 && a == 3){
+            conso.log(1);
+        }
+    ```
+- 3. 简单改造下面的代码，使之分别打印 10 和 20。
+    ```js
+        var b = 10;
+        (function b(){
+            b = 20;
+            console.log(b); 
+        })();
+    ```
 
-2.下面代码中 a 在什么情况下会打印 1？
-```js
-    var a = ?;
-    if(a == 1 && a == 2 && a == 3){
-        conso.log(1);
-    }
-```
-
-3.简单改造下面的代码，使之分别打印 10 和 20。
-```js
-    var b = 10;
-    (function b(){
-        b = 20;
-        console.log(b); 
-    })();
-```
+- 4. 实现一个generator
+- 5. 将数组扁平化并去除其中重复数据，最终得到一个升序且不重复的数组
 
 
 ## 1.实现 (5).add(3).minus(2) 功能
@@ -149,3 +150,93 @@ var b = 10;
 ```
 
 基本数据类型的传递只是传递数值，比如此处不管你修改的是函数外的b还是函数内的b都不会对对方造成影响。对象的传递才是按引用传递，一个变了全部都要变，可以了解一下js里关于基本数据类型和引用数据类型内存空间的存储方式。
+
+## 4.
+```js
+const it = makeIterator(['a', 'b']);
+
+function makeIterator(array) {
+    let nextIndex = 0;
+    return {
+        next: function() {
+            if(nextIndex < array.length) {
+                const value = array[nextIndex];
+                nextIndex++;
+                return {
+                    value,
+                    done: false,
+                }
+            } else {
+                return {
+                    value: undefined,
+                    done: true
+                }
+            }
+        }
+    }
+}
+
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+```
+## 5. 将数组扁平化并去除其中重复数据，最终得到一个升序且不重复的数组
+
+```js
+const arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10]
+
+function work(arr) {
+    // 如果不管有多少层嵌套，都要转成一维数组，可以用Infinity关键字作为参数。
+    let a = arr.flat(Infinity);
+    let b = [...new Set(a)];
+    b.sort((a, b) => a - b);
+    return b;
+}
+console.log(work(arr));
+```
+### flat方法
+[Array​.prototype​.flat()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+flat方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+1. 扁平化嵌套数组
+2. 扁平化与空项: flat() 方法会移除数组中的空项
+
+### flat的替代方案 
+
+**使用`reduce`和`concat`**
+```js
+var arr1 = [1, 2, [3, 4]];
+arr1.flat();
+
+// 反嵌套一层数组
+arr1.reduce((acc, val) => acc.concat(val), []);// [1, 2, 3, 4]
+
+// 或使用 ...
+const flatSingle = arr => [].concat(...arr);
+```
+```js
+// 使用 reduce、concat 和递归无限反嵌套多层嵌套的数组
+function flattenDeep(arr1) {
+    return arr1.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+}
+```
+
+```js
+// 不使用递归，使用 stack 无限反嵌套多层嵌套数组
+var arr1 = [1,2,3,[1,2,3,4, [2,3,4]]];
+function flatten(input) {
+  const stack = [...input];
+  const res = [];
+  while (stack.length) {
+    // 使用 pop 从 stack 中取出并移除值
+    const next = stack.pop();
+    if (Array.isArray(next)) {
+      // 使用 push 送回内层数组中的元素，不会改动原始输入 original input
+      stack.push(...next);
+    } else {
+      res.push(next);
+    }
+  }
+  // 使用 reverse 恢复原数组的顺序
+  return res.reverse();
+}
+```
