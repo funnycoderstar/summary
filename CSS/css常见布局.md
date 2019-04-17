@@ -225,7 +225,7 @@
 中间自适应, 左右两边固定有如下几种方法
 - position实现
 - float实现
-- float和BFC配合圣杯布局
+- 圣杯布局和双飞翼布局
 - flex布局
 
 1. position实现: 左右边设置绝对定位,设置一个最外级div (给父元素设置relative,相对于最外层定位)
@@ -351,11 +351,184 @@
 </body>
 </html>
 ```
-3. float和BFC配合圣杯布局
-必须将中间部分的HTML结构写在最前面
 
 
+3. 圣杯布局和双飞翼布局
+- 共同点：三栏全部float浮动，但左右两栏加上负margin让其跟中间栏div并排，以形成三栏布局。[负边距](http://www.cnblogs.com/2050/archive/2012/08/13/2636467.html)是这两种布局中的重中之重
+- 不同点：解决“中间栏div内容不被遮挡”的思路不同
 
-4.圣杯布局和双飞翼布局
-共同点：三栏全部float浮动，但左右两栏加上负margin让其跟中间栏div并排，以形成三栏布局。
-不同点：解决“中间栏div内容不被遮挡”的思路不同
+
+圣杯布局:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .content {
+			overflow: hidden;
+			padding: 0 100px;
+		}
+        .middle {
+            width: 100%;
+            height: 100px;
+            background: red;
+            float:left;
+            position:relative;	
+        }
+        .left {
+            width: 100px;
+            height: 100px;
+            background: green;
+            float:left;
+            margin-left: -100%;
+            position: relative;
+            left: -100px;
+        }
+        .right {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float:left;
+            margin-left: -100px;
+            position: relative;
+            right: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="middle">
+            middle
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>
+```
+- 1.三者都设置向左浮动
+- 2.设置middle宽度为100%;
+- 3.设置负边距， left设置负左边距为100%, right设置负左边距为负的自身宽度
+- 4.设置content的padding值给左右两个子面板留出空间
+- 5.设置两个子面板为相对定位，`left面板`的left值为负的`left面板`宽度，`right面板`的right值为负的`right面板`的值
+
+但是圣杯布局有个问题：**当面板的middle部分比两边的子面板宽度小的时候，布局就会乱掉**。因此也就有了双飞翼布局来克服这个问题。如果不增加任何标签，想实现更完美的布局非常困难，因此双飞翼布局在主面板上选择了加一个标签
+
+
+双飞翼布局
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .content {
+			overflow: hidden;
+		}
+        .middle {
+            width: 100%;
+            float:left;
+        }
+        .middle-content {
+            width: 100%;
+            height: 100px;
+            background: red;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        .left {
+            width: 100px;
+            height: 100px;
+            background: green;
+            float:left;
+            margin-left: -100%;
+        }
+        .right {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float:left;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="middle">
+            <div class="middle-content">
+                    middle
+            </div>
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>
+```
+- 1.三者都设置向左浮动。
+- 2.设置middle宽度为100%。
+- 3.设置 负边距，left设置负左边距为100%，right设置负左边距为负的自身宽度
+- 4.设置middle-content的margin值给左右两个子面板留出空间。
+
+对比两者可以发现，双飞翼布局与圣杯布局的主要差别在于：
+
+- .双飞翼布局给主面板（中间元素）添加了一个父标签用来通过margin给子面板腾出空间
+- 2.圣杯布局采用的是padding,而双飞翼布局采用的margin, 解决了圣杯布局的问题
+- 3.双飞翼布局不用设置相对布局，以及对应的left和right值
+
+4. flex布局
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .content {
+			display: flex;
+            justify-content:space-between;
+		}
+        .middle {
+            width: 100%;
+            height: 100px;
+            background: red;
+        }
+        .left {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+        .right {
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="left"></div>
+        <div class="middle">middle</div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>
+```
+
+## 参考
+
+- [CSS布局中圣杯布局与双飞翼布局的实现思路差异在哪里？](https://www.zhihu.com/question/21504052)
+- [CSS || 三栏布局，两边固定，中间自适应](https://segmentfault.com/a/1190000008705541)
