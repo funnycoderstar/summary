@@ -21,6 +21,7 @@
    * [常见的格式化时间的](JavaScript/date.md)
    * [函数柯里化](JavaScript/Function_curry.md)
    * [浏览器和Node的Event Loop](JavaScript/evnet-Loop.md)
+   * [JWT](JavaScript/JWT.md)
 
 * 3.JavaScript设计模式
   * [观察者模式](JavaScript设计模式/观察者模式.md)
