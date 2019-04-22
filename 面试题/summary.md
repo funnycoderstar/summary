@@ -14,7 +14,7 @@ rxjs相关
 3. RxJS冷热流区别
 4. RxJS调试方法
 5. RxJS相对于其他状态管理方案的优势？
-
+___
 ## react
 1. 针对React的性能优化手段 http://www.alloyteam.com/2016/05/react-mobile-web-optimization/
 2. mobx-react如何驱动react组件重渲染
@@ -31,7 +31,7 @@ rxjs相关
 12. 函数式编程
 13. forceUpdate经历了哪些生命周期，子组件呢?
 
-
+___
 ## vue && react
 1. vue和react谈谈区别和选型考虑
 2. Vue/React 的 diff 算法
@@ -40,7 +40,7 @@ rxjs相关
 5. react和vue更新机制的区别, react 更新机制，diff算法,  vue 更新机制，双向绑定
 6. ssr性能优化，node中间层细节处理
 
-
+___
 ## JS
 1. ES6的Set内部实现
 2. 跨域
@@ -108,6 +108,9 @@ https://segmentfault.com/a/1190000011145364
 55. 页面加载白屏的原因有哪些，以及如何监控白屏时间，如何优化
 56. 数组去重的几种方法
 57. 浏览器缓存原理
+58. apply和call的区别
+59. 原生ajax实现步骤, ajax/jsonp区别,jsonp原理
+
 
 ## css && html
 1. 水平垂直居中
@@ -126,7 +129,8 @@ https://segmentfault.com/a/1190000011145364
 13. rem布局实现原理
 14. css变量
 15. 块标签和行标签的区别, 行元素怎么变成块元素, 块元素怎么变成行元素
-
+16. display: inline-block 有间隙怎么处理
+___
 ## HTTP
 1. 三次握手和四次挥手详细介绍
 2. TCP有哪些手段保证可靠交付(https://blog.csdn.net/u012495483/article/details/77345823)
@@ -155,7 +159,9 @@ https://www.zhihu.com/question/35720092
 15. http的缓存可以分几种, 禁止浏览器缓存的话, http头部怎么设置, 什么是CORS
 
 16. cookie设置不同的域，不同的path
-
+17. HTTP/2.0 协议的新特性
+18. 什么是webSocket协议？webSocket有什么特点？
+___
 ## 算法 
 1. 算法：top-K问题，分成top-1,top-2,top-K三小问, 如果有一个大的数组，都是整型，怎么找出最大的前10个数， TopK问题
 2. 进制转16进制，最好用位运算
@@ -167,7 +173,7 @@ https://www.zhihu.com/question/35720092
 
 11. 二叉搜索树, 前序遍历, 中序遍历, 后序遍历
 12. 链表, 从头到尾打印链表
-
+___
 ## 手写代码
 1. 算法：实现setter(obj, 'a.b.c' ,val)
 2. promise：Promise串行, promise并行怎么实现？promise.all, 手写promise.all(高频)
@@ -193,7 +199,8 @@ https://www.zhihu.com/question/35720092
 14. 如何遍历一个树，并对其进行优化。
 15. 场景题：一个气球从右上角移动到中间，然后抖动，如何实现
 16. 场景题：一个关于外边距合并的高度计算
-
+17. js上拉加载和下拉刷新 实现的方法
+___
 ## webpack
 1. 常见的loader和plugin，loader和plugin的区别, webpack的plugins和loaders的实现原理
 2. webpack如何优化编译速度,
@@ -203,13 +210,13 @@ https://www.zhihu.com/question/35720092
 6. webpack babel配置中的stage-0是什么意思？
 7. 如何提高webpack打包的速度
 8. webpack 打包的过程
-
+___
 ## git
 - git rebase
 - git reset
 - git commit --amend
 - git cherry-pick
-
+___
 ## 其他
 1. 方案题：不同前端技术栈的项目，如何实现一套通用组件方案？
 2. nginx负载均衡配置
