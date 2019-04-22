@@ -63,6 +63,7 @@
    * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
 
 * 11.面试题
+   * [面试题总结](面试题/summary.md)
    * [18道JavaScript面试题](面试题/18道js笔试题.md)
    * [算法面试题](面试题/AlgorithmInterview.md)
    * [console.log系列一](面试题/log1.md)
