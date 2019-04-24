@@ -182,7 +182,7 @@ Object(4) [empty × 2, 1, 2, splice: ƒ, push: ƒ]---->
 因为只定义了下标为2和3两项, 没有定义0和1,所以前面会是empty;
 
 1.这个对象如果有push和splice会输出会转换为数组, 下图为去掉splice和包含splice打印的值
-![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555380463559.png?width=810&height=984&imageView2/3/w/196/h/240)
+![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555380463559.png?width=810&height=984&imageView2/3/)
 
 ## 5.
 

@@ -28,7 +28,7 @@
 
 最终编译的结果为：
 
-![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1553959508870.png?width=1668&height=284&imageView2/3/w/537/h/91)
+![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1553959508870.png?width=1668&height=284&imageView2/3/)
 
 Vue中的scoped属性的效果主要是通过PostCss实现的：  
 1. 给加了scoped属性组件中所有的DOM添加一个独一无二的属性  

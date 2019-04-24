@@ -45,7 +45,7 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述�
 </script>
 </html>
 ```
-![BFC](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555513552484.png?width=582&height=778&imageView2/3/w/178/h/240)
+![BFC](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555513552484.png?width=582&height=778&imageView2/3/)
 
 从效果上看，因为两个 div 元素都处于同一个 BFC 容器下 (这里指 body 元素) 所以第一个 div 的下边距和第二个 div 的上边距发生了重叠，所以两个盒子之间距离只有 100px，而不是 200px。
 
@@ -84,7 +84,7 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述�
 </script>
 </html>
 ```
-![BFC](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555513722801.png?width=744&height=936&imageView2/3/w/189/h/240)
+![BFC](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555513722801.png?width=744&height=936&imageView2/3/)
 2.BFC 可以包含浮动的元素（清除浮动）
 3.BFC 可以阻止元素被浮动元素覆盖
 

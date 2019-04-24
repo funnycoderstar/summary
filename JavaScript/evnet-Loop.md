@@ -137,7 +137,7 @@ children3-1
 
 ## Node的事件循环是libuv实现的
 
-![libuv](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1554106811355.png?width=750&height=679&imageView2/3/w/264/h/240)
+![libuv](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1554106811355.png?width=750&height=679&imageView2/3/)
 
 Javascript是单线程运行, 异步操作很重要.libuv这个库负责各种回调函数的执行时间, 毕竟异步任务最后还是要回到主线程,一个个排队执行
 

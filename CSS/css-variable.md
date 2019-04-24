@@ -36,10 +36,10 @@ element.style.setProperty("--my-var", 'red');
 ```
 浏览器支持
 css自定义属性目前支持的浏览器有
-![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1537873558720.png?width=2594&height=956&imageView2/3/w/537/h/198)
+![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1537873558720.png?width=2594&height=956&imageView2/3/)
 
 ## 使用[css-vars-polyfill](https://github.com/jhildenbiddle/css-vars-ponyfill) 
-![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1537873565560.png?width=874&height=300&imageView2/3/w/537/h/183)
+![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1537873565560.png?width=874&height=300&imageView2/3/)
 
 ## polyfill
 
@@ -53,7 +53,7 @@ polyfill用于表示根据新特性的定义,创建一段与之行为等价但�
 可以这样简单的理解一下: 
 css自定义变量在IE浏览器中无法使用,但是使用了[css-vars-polyfill](https://github.com/jhildenbiddle/css-vars-ponyfill) ,就可以让我们在IE9+中也可以使用该属性;
 还记得 [babel-polyfill](https://babeljs.io/docs/en/babel-polyfill/) 么,  babel允许我们使用es6的语法,它主要是把es6的语法转成大多数浏览器可是支持的es5语法, 可以使用 工具 来看一下平常所写的es6语法对应到es5是什么样的, 例如
-![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1537873573302.png?width=1748&height=268&imageView2/3/w/537/h/81)
+![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1537873573302.png?width=1748&height=268&imageView2/3/)
 但是像  Array.from , Object.assign, Array.prototype.includes, promise, async ,await 这些都是es5语法中没有的,我们还是想使用,但是很多浏览器不支持怎么办, babel-polyfill就是帮我们解决这个问题的
 
 

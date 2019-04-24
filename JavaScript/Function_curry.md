@@ -14,7 +14,7 @@ new func(); // foo { b: 100 }
 ```
 #### bind函数的实现
 
-![bind](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1554649999638.png?width=1248&height=651&imageView2/3/w/459/h/240)
+![bind](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1554649999638.png?width=1248&height=651&imageView2/3/)
 
 
 bind函数其实是实现了this的指定和参数的传递

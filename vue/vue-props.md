@@ -36,7 +36,7 @@ export default {
 }
 </script>
 ```
-![error](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555316489304.png?width=1960&height=298&imageView2/3/w/537/h/81)
+![error](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555316489304.png?width=1960&height=298&imageView2/3/)
 
 
 ```js

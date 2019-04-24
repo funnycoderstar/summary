@@ -251,7 +251,7 @@ export default test;
 
 
 以上代码在严格模式下会报错
-![vuexError](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555385416459.png?width=1788&height=220&imageView2/3/w/537/h/66)
+![vuexError](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555385416459.png?width=1788&height=220&imageView2/3/)
 
 [vuex开启严格模式](https://vuex.vuejs.org/zh/guide/strict.html), 仅需要在创建store的时候传入 `strict: true`
 ```js

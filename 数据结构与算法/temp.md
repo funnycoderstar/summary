@@ -152,11 +152,11 @@ function Clone(pHead){
 ```
 ## 思路2: 在原链表中复制然后分离
 1.在旧链表中，复制每一个节点，并将复制的节点插入到该节点后面
-![1](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555685221626.png?width=462&height=107&imageView2/3/w/537/h/123)
+![1](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555685221626.png?width=462&height=107&imageView2/3/)
 2.遍历链表， 初始化复制节点的random指向。
-![2](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555685231548.png?width=456&height=107&imageView2/3/w/537/h/126)
+![2](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555685231548.png?width=456&height=107&imageView2/3/)
 3.将链表拆分成原链表和复制所得链表
-![3](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555685241672.png?width=463&height=109&imageView2/3/w/537/h/126)
+![3](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555685241672.png?width=463&height=109&imageView2/3/)
 ## 代码
 ```js
 /*function RandomListNode(x){

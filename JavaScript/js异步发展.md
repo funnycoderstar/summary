@@ -1,5 +1,5 @@
 ## JS异步解决方案的发展历程以及优缺点
-https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/11
+JavaScript在发展过程中，共经历了回调函数，Promise对象，Generator函数， async函数来处理异步；
 
 ## 1. 回调函数
 缺点: 回调地狱，不能用try catch捕获错误，不能return；
@@ -36,7 +36,7 @@ ajax('XXX1')
       // 操作逻辑
   })
 ```
-缺点：无法取消Promise,错误需要通过回调函数来捕获
+缺点：无法取消Promise,错误需要通过回调函数来捕获，
 
 ## 3. Generator
 特点：可以控制函数的执行，可以配合 co 函数库使用
@@ -57,6 +57,9 @@ async,await是异步的终极解决方案
 优点：代码清晰，不用像Promise写一大堆 then链， 处理了回调地狱的问题
 缺点：await将异步代码改造成同步代码，如果多个异步操作没有依赖性而是用await会导致性能上的降低
 
+
+## 参考
+https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/11
 
 
 

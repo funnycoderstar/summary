@@ -104,7 +104,7 @@ obj1: 原始数据
 obj2: 赋值操作得到
 obj3: 浅拷贝得到
 
-![image](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555570283306.png?width=1304&height=418&imageView2/3/w/537/h/171)
+![image](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1555570283306.png?width=1304&height=418&imageView2/3/)
 深拷贝是对对象以及对象的所有子对象进行拷贝;
 
 ## 实现深拷贝和浅拷贝

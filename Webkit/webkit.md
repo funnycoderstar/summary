@@ -11,7 +11,7 @@
 - 3.从绘图上下文到生成最终的图像
 
 ### 从网页URL到构建完DOM树的这个过程
-![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1528957039450.png?width=848&height=700&imageView2/3/w/537/h/442)
+![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1528957039450.png?width=848&height=700&imageView2/3/)
 
 - 1.当用户输入网页URL的时候,WebKit调用其资源加载器加载改URL对应的网页
 - 2.加载器依赖网络模块建立连接,发送请求并接受答复
@@ -25,7 +25,7 @@
 在上述过程中,网页在加载和渲染过程中会发出"DOMConent"事件和DOM的"onload"事件,分别在DOM树创建完之后,以及DOM树剪完并且网页所依赖的资源都加载完之后发生,因为某些资源的加载并不会阻碍DOM树的创建,所以这两个事件多数时候不是同时发生的.
 
 ### 从CSS和DOM树到绘图上下文
-![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1528957625187.png?width=804&height=710&imageView2/3/w/537/h/474)
+![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1528957625187.png?width=804&height=710&imageView2/3/)
 
 - 1.CSS文件被CSS解释器解释成内部表示结构
 - 2.CSS解释器工作完之后,在DOM树上附加解释后的样式信息,这就是RenderObejct树
@@ -34,7 +34,7 @@
 RenderObject树的简历并不表示DOM树会被销毁,事实上,上图中的四个内部结构一直存在,知道网页被销毁,因为它们对于网页的渲染起了非常大的作用
 
 ### 从绘图上下文到最终的图像(主要依赖2D和3D图形库)
-![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1528957971154.png?width=908&height=466&imageView2/3/w/537/h/274)
+![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1528957971154.png?width=908&height=466&imageView2/3/)
 
 - 1.绘图上下文是一个与平台无关的抽象类,也就是绘图具体实现类
 - 2.绘图实现类也可能有简单的实现,也可能有复杂的实现,在Chromium中,它的实现相当复杂,也可能有更复杂的实现,需要Chromium的合成器来完成复杂的多进程和GPU加速机制,这在后面会设计
