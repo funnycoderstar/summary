@@ -42,28 +42,32 @@
    * [线程和进程](node/线程和进程.md)
    * [编写一个cli工具](node/编写一个cli工具.md)
    * [Node.js中package.json中库的版本号](node/npm-package-version.md)
-* 7.HTTP
+* 7.其他技术
+   * [如何学习新技术](Other/README.md.md)
+   * [GraphQL简介](Other/GraphQL.md)
+   
+* 8.HTTP
    * [http方法](HTTP/http方法.md)
    * [http状态码](HTTP/http状态码.md)
    * [http首部](HTTP/http首部.md)
 
-* 8.Linux
+* 9.Linux
    * [bash](linux/bash.md)
    * [vim](linux/vim.md)
    * [文件](linux/文件.md)
    * [目录管理](linux/目录管理.md)
 
-* 9.工具类
+* 10.工具类
     * webapack
        * [webpack常见面试题](tool/webpack/webpack常见面试题.md)
     * [移动端调试方法](tool/app_debug.md)
     * [工具文档](tool/good_tool.md)
 
-* 10.数据结构与算法
+* 11.数据结构与算法
    * [javascript实现一个二叉搜索树](数据结构与算法/binarySearchTree.md)
    * [leetcode](https://github.com/funnycoderstar/leetcode/issues)
 
-* 11.面试题
+* 12.面试题
    * [面试题总结](面试题/summary.md)
    * [18道JavaScript面试题](面试题/18道js笔试题.md)
    * [算法面试题](面试题/AlgorithmInterview.md)
