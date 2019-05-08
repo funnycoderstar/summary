@@ -45,6 +45,7 @@
 * 7.其他技术
    * [如何学习新技术](Other/README.md.md)
    * [GraphQL简介](Other/GraphQL.md)
+   * [Flutter简介](Other/Flutter.md)
    
 * 8.HTTP
    * [http方法](HTTP/http方法.md)
