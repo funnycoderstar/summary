@@ -1,29 +1,37 @@
-> 处理时间,获得昨天,明天,后天...以及对应的星期
+## 常见日期格式的处理
+### 处理时间,获得昨天,明天,后天...以及对应的星期
 
 ```js
-const arr = [ '周日', '周一', '周二', '周三', '周四', '周五', '周六', ];
-        function getDateStr(count) {
-            if (count === 0) {
-                return '今天';
-            }
-            const date = new Date();
-            date.setDate(date.getDate() + count);
-            const index = date.getDay();  // 获取周几,0为周日
-            const year = date.getFullYear();
-            const month = date.getMonth() + 1;
-            const day = date.getDate();
-            return year + '-' + month + '-' + day + '(' + arr[index] + ')';
-        }
-        for (let i = 0; i < this.startDayItems.length; i++) {
-            this.startDayItems[i] = getDateStr(i);
-        }
-        
-        // 得出一个数组
-        startDayItems: [ '今天', '2017-04-17（周二）', '2017-04-18（周三）', '2017-04-19（周四）', '2017-04-20（周五）', '2017-04-21（周六）', '2017-04-22（周日）', ],
-        
+const arr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六', ];
+
+function getDateStr(count) {
+    if (count === 0) {
+        return '今天';
+    }
+    const date = new Date();
+    date.setDate(date.getDate() + count);
+    const index = date.getDay(); // 获取周几,0为周日
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return year + '-' + month + '-' + day + '(' + arr[index] + ')';
+}
+// 测试用例
+let startDayItems = [];
+for (let i = 0; i < 7; i++) {
+    startDayItems[i] = getDateStr(i);
+}
+console.log(startDayItems); 
+// [ '今天',
+//   '2019-5-15(周三)',
+//   '2019-5-16(周四)',
+//   '2019-5-17(周五)',
+//   '2019-5-18(周六)',
+//   '2019-5-19(周日)',
+//   '2019-5-20(周一)' ]
 ```
 
-> 时间戳转换成 2017.03 
+### 时间戳转换成 xxxx.MM 
 
 ```js
 const date = new Date();
@@ -47,8 +55,7 @@ time(value) {
 },
 
 ```
-
->日期格式转换为 时间戳
+### 日期格式转换为 时间戳
 
 ```js
 // 也很简单
@@ -74,7 +81,7 @@ time3 = Date.parse(date);
 
 ```
 
-> Date()的参数
+### Date()的参数
 
 ```js
 new Date("month dd,yyyy hh:mm:ss");
@@ -95,7 +102,7 @@ new Date(2016,8,16);
 new Date(1474006780);
 
 ```
-> 用正则表达式格式化日期
+### 用正则表达式格式化日期
 ```js
 // 格式化日期
 var reg = /^(\d{4})[/-](\d{2})[/-](\d{2})$/

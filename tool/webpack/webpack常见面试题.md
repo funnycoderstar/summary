@@ -285,6 +285,13 @@ function hotCreateModule(moduleId) {
 ## 5.编写一个plugin和loader
 ## 6.webpack如何优化编译速度
 
+项目方面
+1. 使用Yarn
+2. 删除没有使用的依赖
+webpack
+1. happypack
+原理就是让loader可以多进程地去处理文件
+
 
 
 

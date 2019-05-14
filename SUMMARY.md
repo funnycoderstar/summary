@@ -18,7 +18,7 @@
    * [Webkit的网页渲染过程](Webkit/webkit.md)
    * [介绍模块化发展历程](JavaScript/module.md)
    * [实现一个promise](JavaScript/promise.md)
-   * [常见的格式化时间的](JavaScript/date.md)
+   * [常见日期格式的处理](JavaScript/date.md)
    * [函数柯里化](JavaScript/Function_curry.md)
    * [浏览器和Node的Event Loop](JavaScript/evnet-Loop.md)
    * [JWT](JavaScript/JWT.md)
