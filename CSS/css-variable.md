@@ -41,6 +41,21 @@ css自定义属性目前支持的浏览器有
 ## 使用[css-vars-polyfill](https://github.com/jhildenbiddle/css-vars-ponyfill) 
 ![](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1537873565560.png?width=874&height=300&imageView2/3/)
 
+### 原理简析
+刚开始第一眼想到的肯定是遍历所有的文件将CSS变量的值转为静态的值，但是有几个问题需要考虑一下
+1.将所有的都遍历一遍然后进行替换，如果能快速的做到？
+2.新增DOM节点的时候，怎么判断？ (MutationObserver)
+
+先判断当前是否原生支持 css自定义属性;
+```js
+const isBrowser       = typeof window !== 'undefined';
+const isNativeSupport = isBrowser && window.CSS && window.CSS.supports && window.CSS.supports('(--a: 0)');
+```
+从指定的`<style>`和`<link>`元素获取，解析和转换CSS自定义属性为静态值，然后将带有静态值的新`<style>`元素附加到DOM，以便为旧版浏览器提供CSS自定义属性兼容性。
+还为现代和旧版浏览器中的运行时值的实时更新提供了单一界面。
+
+
+
 ## polyfill
 
 > 补充polyfill 的简单解释
