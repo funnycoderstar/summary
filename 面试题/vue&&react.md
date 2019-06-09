@@ -1,9 +1,9 @@
 # vue
 ## 1. vue的nextTick实现原理以及应用场景 
 
-2. vue组件间通信
-3. Vue2.0 怎么实现双向绑定的, Vue3.0 怎么实现双向绑定的
-4. vue中用到的设计模式
+## 2. vue组件间通信
+## 3. Vue2.0 怎么实现双向绑定的, Vue3.0 怎么实现双向绑定的
+## 4. vue中用到的设计模式
 5. Vue hash 路由和 history 路由的区别
 6. Vue 计算属性和 watch 在什么场景下使用
 7. Vue3 proxy解决了哪些问题？Vue3 proxy的优劣, vue 的双向绑定原理（vue 2.0 和 vue 3.0，两种实现的优缺点）
