@@ -52,6 +52,7 @@
    * [http方法](HTTP/http方法.md)
    * [http状态码](HTTP/http状态码.md)
    * [http首部](HTTP/http首部.md)
+   * [理解cookie，session, token](HTTP/cookie&&session&&token.md)
 
 * 9.Linux
    * [bash](linux/bash.md)
