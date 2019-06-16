@@ -1,4 +1,41 @@
-#### 请求首部字段
+# HTTP方法
+- GET:获取资源
+- POST:传输实体主体
+- PUT：传输文件
+- HEAD:获得报文首部
+- DELETE:删除文件
+- OPTIONS:询问支持的方法
+- TRACE:追踪路径TRACE方法是让Web服务器端将之前的请求通信环回给客户端的方法。
+- 发送请求时，在Max-Forwards首部字段中填入数值，每经过一个服务器端就将该数字减1，当数值刚好减到0时，就停止继续传输，最后接收到请求的服务器端则返回状态码200OK的响应。
+- CONNECT: 要求用隧道协议链接代理
+
+# HTTP状态码
+## 1. 1xx (信息性状态码)  接受的请求正在处理
+## 2. 2xx 成功           请求正常处理完毕
+- 200 OK 客户端发来的请求在服务器端被正常处理了
+- 204 No Content 服务器接收的请求已成功处理,但是返回的响应报文中不含实体的主体部分，另外,也不允许返回任何实体的主体
+一般在只需要从客户端往服务器发送信息，而对客户端不需要发送新信息内容的情况下使用。
+- 206 Partial Content 客户端进行了范围请求,而服务器成功执行了这部分的Get请求,响应报文中包含Content-Range指定范围的实体内容
+
+## 3. 3xx 重定向         需要进行附加操作已完成请求
+- 301 Moved Permanently 永久性重定向
+- 302 Found 临时性重定向
+- 303 See Other 表示由于请求对应的资源错在着另一个URI,应用GET方法定性获取请求的资源
+- 304 Not Modified 表示客户端发送附带条件的请求时,服务器允许请求访问资源,但未满足条件的情况下
+- 附带条件的请求是指采用GET方法的请求报文中包含If-Match,If-Modified-Since, If-None-Match，If-Range，If-Unmodified-Since中任一的首部
+
+## 4. 4xx 客户端错误      服务器无法处理请求
+- 400 Bad Request 请求报文中存在语法错误
+- 401 Unauthorized 表示发送的请求需要有通过HTTP认证
+- 403 Forbidden 对请求资源的访问被服务器拒绝了
+- 404 Not Found 服务器无法找到请求的资源
+
+## 5. 5xx 服务器错误      服务器处理请求错误
+- 500 Internal Server Error 服务器在执行时发生了错误
+- 503 Service Unavailable 表明服务器暂时处于超负载或正在进行停机维护
+
+# HTTP首部
+## 请求首部字段
 客户端往服务器发送报文中所使用的字段,用于补充请求的附加信息，客户端信息，对响应内容相关的优先级等内容
 - 1.Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级,可使用type/subtype这种形式,一次指定多种媒体类型
@@ -48,7 +85,7 @@ If-Modified-Since用于确认代理或客户端拥有的本地资源的有效性
 - 19.User-Agent:Mozilla/5.0(WindowsNT6.1;WOW64;rv:13.0)Gecko/20100101Firefox/13.0.1
 用于传达浏览器得种类
 首部字段User-Agent会将创建请求的浏览器和用户代理名称等信息传达给服务器。
-#### 响应首部字段
+## 响应首部字段
 响应首部字段是由服务器端向客户端返回响应报文中所使用的字段,用于补充响应的附加信息,服务器信息，以及对客户端的附加要求信息
 - 1，Accept-Ranges:bytes
 - 2，Age:600
@@ -67,7 +104,7 @@ If-Modified-Since用于确认代理或客户端拥有的本地资源的有效性
 - 9，WWW-Authenticate:Basicrealm="UsagidesignAuth"
 - 10，首部字段WWW-Authenticate用于HTTP访问认证。
 
-#### 实体首部字段
+## 实体首部字段
 是包含在请求报头和响应报文中的实体部分所使用的首部,用于补充内容的更新时间等与实体相关的信息
 - 1，Allow:GET,HEAD
 首部字段Allow用于通知客户端能够支持Request-URI指定资源的所有HTTP方法。当服务器接收到不支持的HTTP方法时，会以状态码405MethodNotAllowed作为响应返回。与此同时，还会把所有能支持的HTTP方法写入首部字段Allow后返回。
