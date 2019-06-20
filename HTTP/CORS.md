@@ -50,13 +50,13 @@
 浏览器发现这次跨域请求是简单请求，就自动在头信息之中，添加一个`Origin`字段；`Origin`字段用来说明请求来自哪个源（协议+域名+端口号）。服务端根据这个值，决定是否同意本次请求。
 
 ### CORS请求相关的字段，都以 `Access-Control-`开头
-- Access-Control-Allow-Origin：必选
+- [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)：必选
    - 请求头`Origin`字段的值
    - `*`：接受任何域名
 - [Access-Control-Allow-Credentials](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)：可选，
   - true: 表示允许发送cookie，此时`Access-Control-Allow-Origin`不能设置为`*`，必须指定明确的，与请求网页一致的域名。
   - 不设置该字段：不需要浏览器发送cookie
-- Access-Control-Expose-Headers：可选
+- [Access-Control-Expose-Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Expose-Headers)：可选
 
 ### withCredentials 属性
 CORS请求默认不发送Cookie和HTTP认证信息，如果要把Cookie发到服务器，一方面需要服务器同意，设置响应头`Access-Control-Allow-Credentials: true`,另一方面在客户端发出请求的时候也要进行一些设置;
@@ -108,8 +108,9 @@ HTTP请求的方法是POST，请求头`Content-Type`字段为`application/json`�
 
 ## 单独接口单独处理
 比如一个简单的登录页面，需要给接口接口传入 username和password 两个字段；前端的域名为 localhost:8900，后端的域名为 localhost:3200，构成跨域。
-1. 如果设置请求头`'Content-Type': 'application/x-www-form-urlencoded'`，这种情况则为简单请求；
+### 1. 如果设置请求头`'Content-Type': 'application/x-www-form-urlencoded'`，这种情况则为简单请求；
 会有跨域问题，直接设置 响应头 `Access-Control-Allow-Origin`为`*`, 或者具体的域名；注意如果设置响应头`Access-Control-Allow-Credentials`为`true`，表示要发送`cookie`，则此时`Access-Control-Allow-Origin`的值不能设置为星号，必须指定明确的，与请求网页一致的域名。
+
 ```js
 const login = ctx => {
     const req = ctx.request.body;
@@ -122,8 +123,9 @@ const login = ctx => {
 }
 ```
 
-2. 如果设置请求头`'Content-Type': 'application/json'`，这种情况则为非简单请求
+### 2. 如果设置请求头`'Content-Type': 'application/json'`，这种情况则为非简单请求
 处理OPTIONS请求，服务端可以单独写一个路由，来处理`login`的OPTIONS的请求
+
 ```js
 app.use(route.options('/login', ctx => {
     ctx.set('Access-Control-Allow-Origin', '*');
@@ -159,9 +161,8 @@ const login = ctx => {
     };
 }
 
-
+// 将公共逻辑方法放到中间件中处理
 app.use((ctx, next)=> {
-    console.log(ctx.request.headers);
     const headers = ctx.request.headers;
     if(ctx.method === 'OPTIONS') {
         ctx.set('Access-Control-Allow-Origin', '*');
@@ -172,7 +173,6 @@ app.use((ctx, next)=> {
     }
 })
 app.use(route.post('/login', login));
-
 
 app.listen(3200, () => {
     console.log('启动成功');
@@ -204,9 +204,11 @@ module.exports = function (options) {
     const defaults = {
         allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
     };
-
+    // 默认的配置项和使用时设置的options进行一个融合
     options = Object.assign({}, defaults, options);
 
+    // 因为函数的一些参数，exposeHeaders，allowMethods，allowHeaders的形式既可以是String,也可以是Array类型，
+    // 如果是Array类型,也转换为用逗号分隔的字符串。
     if (Array.isArray(options.exposeHeaders)) {
         options.exposeHeaders = options.exposeHeaders.join(',');
     }
@@ -234,9 +236,10 @@ module.exports = function (options) {
         // Always set Vary header
         // https://github.com/rs/cors/issues/10
         ctx.vary('Origin');
-
+        // 如果请求头不存在 origin，则直接跳出该中间件，执行下一个中间件
         if (!requestOrigin) return await next();
 
+        // 对origin参数的不同类型做一个处理
         let origin;
         if (typeof options.origin === 'function') {
             origin = options.origin(ctx);
@@ -252,7 +255,11 @@ module.exports = function (options) {
             ctx.set(key, value);
             headersSet[key] = value;
         }
-
+        /**
+        * 非OPTIONS请求的处理
+        * 
+        */
+       
         if (ctx.method !== 'OPTIONS') {
             // Simple Cross-Origin Request, Actual Request, and Redirects
             set('Access-Control-Allow-Origin', origin);
@@ -319,4 +326,10 @@ module.exports = function (options) {
     };
 };
 ```
+以上是 [@koa/cors](https://github.com/koajs/cors/blob/master/index.js) V3.0.0的源码实现，如果你真正理解的CORS，看源码的逻辑就会非常轻松。
 
+主要是分两个逻辑来处理，有预检请求的和没有预检请求的。
+
+对于非OPTIONS请求的处理，要根据情况加上 `Access-Control-Allow-Origin`，`Access-Control-Allow-Credentials`，`Access-Control-Expose-Headers`这三个响应头部；
+
+对于OPTIONS请求（预检请求）的处理，要根据情况加上 `Access-Control-Allow-Origin`，`Access-Control-Allow-Credentials`，`Access-Control-Max-Age`，`Access-Control-Allow-Methods`，`Access-Control-Allow-Headers`这几个响应头部；
