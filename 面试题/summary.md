@@ -149,7 +149,7 @@ DNS污染
 https://www.zhihu.com/question/35720092
 7. HTTP和HTTPS, HTTP和HTTPS的区别，如何升级成HTTPS, https 的过程和服务器搭建
 8. 301 302 307 308 401 403
-9. DNS解析全过程, DNS 解析的详细过程
+9. DNS解析全过程, DNS 解析的详细过程(https://www.zhihu.com/question/23042131)
 10. Http请求中的keep-alive有了解吗。
 
 11. http的无状态
