@@ -15,6 +15,10 @@ L（Onloaded Event）: 所有资源加载完成的时间
 
 fp 给body标签加一个内联样式背景色，会减小fp的时间，
 
+fp是chrome浏览器独有的特性，可以通过 window.chrome.loadTime()来获取到firstPaintTime，不过它的值都是Unix秒，需要乘以1000，换算成毫秒做计算。
+![chrome.loadTime](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1562687926727.png)
+
 `requestAnimationFrame`实现跳帧动画， requestAnimationFrame的第二个参数
 
 requestidlecallback，在浏览器空闲的时期依次调用函数
+

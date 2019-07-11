@@ -210,6 +210,13 @@ ___
 6. webpack babel配置中的stage-0是什么意思？
 7. 如何提高webpack打包的速度
 8. webpack 打包的过程
+9. webpack按需加载
+10. webpack manifest & runtime
+11. webpack tree-shaking
+[如何评价 Webpack 2 新引入的 Tree-shaking 代码优化技术？](https://www.zhihu.com/question/41922432)
+12. webpack code-splitting
+[在Webpack中使用Code Splitting实现按需加载](http://www.alloyteam.com/2016/02/code-split-by-routes/)
+
 ___
 ## git
 - git rebase
