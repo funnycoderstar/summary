@@ -22,3 +22,11 @@ fp是chrome浏览器独有的特性，可以通过 window.chrome.loadTime()来�
 
 requestidlecallback，在浏览器空闲的时期依次调用函数
 
+
+
+First Paint entry contains a DOMHighResTimeStamp reporting the time when the browser first rendered after navigation. This excludes the default background paint, but includes non-default background paint and the enclosing box of an iframe. This is the first key moment developers care about in page load – when the browser has started to render the page.
+
+First Paint reports the time when the browser first rendered after navigation. This excludes the default background paint, but includes non-default background paint. This is the first key moment developers care about in page load – when the browser has started to render the page.”
+
+First Contentful Paint entry contains a DOMHighResTimeStamp reporting the time when the browser first rendered any text, image (including background images), non-white canvas or SVG. This excludes any content of iframes, but includes text with pending webfonts. This is the first time users could start consuming page content.
+

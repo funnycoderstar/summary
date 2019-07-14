@@ -76,5 +76,7 @@
    * [算法面试题](面试题/AlgorithmInterview.md)
    * [console.log系列一](面试题/log1.md)
    * [代码实现系列一](面试题/code1.md)
-
+* 13.翻译的一些文章
+   * [chrome devTools的network面板介绍](translation/chrome_devTools_network.md)
+   * [使用开始hrome devTools的Performance面板分析运行时性能](translation/chrome_devTools_performance/Get Started.md)
 

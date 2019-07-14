@@ -25,6 +25,8 @@
 
 11. 面试题
 
+12. 翻译的一些文章
+
 # AboutMe
 
 - [github](https://github.com/funnycoderstar)
