@@ -47,6 +47,7 @@
    * [GraphQL简介](Other/GraphQL.md)
    * [Flutter简介](Other/Flutter.md)
    * [PWA简介](Other/PWA.md)
+   * [Web worker & Service Worker & Workbox](Other/web worker.md)
    
 * 8.HTTP
    * [http方法](HTTP/http方法.md)
