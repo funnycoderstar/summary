@@ -1,9 +1,9 @@
 ## Babel包的构成
 [核心包](https://github.com/babel/babel/tree/master/packages#core-packages)
-babel-core: 是babel转译器本身,提供转义的API,例如babel.transform,webpack的babel-loader就是调用这个API完成转译的
-babylon：js的词法解析器
-babel-traverse：用于对AST（抽象语法树Abstract Syntax Tree）的遍历
-babel-generator：根据AST生成代码
+@babel/core: 是babel转译器本身,提供转义的API,例如babel.transform,webpack的babel-loader就是调用这个API完成转译的
+@babel/parser：js的词法解析器
+@babel/traverse：用于对AST（抽象语法树Abstract Syntax Tree）的遍历
+@babel/generator：根据AST生成代码
 
 其他:
 babel-polyfill：JS标准新增的原生对象和API的shim，实现上仅仅是core-js和regenerator-runtime两个包的封装
@@ -327,6 +327,11 @@ babel-plugin-syntax-dynamic-import
 }
 ```
 
+如果想要了解更多，可以阅读和尝试：
+- [分析 AST](https://astexplorer.net/)
+- [esprima](https://esprima.org/demo/parse.html#)
+- [可视化AST](http://resources.jointjs.com/demos/javascript-ast)
+- [AST 规范](https://github.com/estree/estree)
 ### AST在很多方面用到
 1.eslint对代码错误或风格的检查,发现一些潜在的错误
 2.IDE的错误提示,格式化,高亮,自动补全等
@@ -336,9 +341,9 @@ babel-plugin-syntax-dynamic-import
 ### babel的工作过程
 ![Babel](https://img.alicdn.com/tps/TB1nP2ONpXXXXb_XpXXXXXXXXXX-1958-812.png)
 
-- Parse（解析）： 将代码字符串解析成抽象语法树； ES6代码输入 ==》 babylon进行解析 ==》 得到AST
-- Transform(转换)：对抽象语法树进行变换操作；plugin用babel-traverse对AST树进行遍历转译 ==》 得到新的AST树
-- Generate(代码生成)：再根据变换后的抽象语法树再生成代码字符串；用babel-generator通过AST树生成ES5代码
+- Parse（解析）： 将代码字符串解析成抽象语法树； ES6代码输入 ==》进行解析(@babel/parser) ==》 得到AST
+- Transform(转换)：对抽象语法树进行变换操作；plugin用@babel/traverse对AST树进行遍历转译 ==》 得到新的AST树
+- Generate(代码生成)：再根据变换后的抽象语法树再生成代码字符串；用@babel/generator通过AST树生成ES5代码
 
 我们来看看Babel是如何把 const add = (a, b) => a + b,看看它如何经过Babel变成： 
 ```js
