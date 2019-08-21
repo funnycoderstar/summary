@@ -47,7 +47,47 @@ undefined
 一个新数组，通过测试的元素组成的数组，如果没有任何数组元素通过测试，则返回空数组。
 不会改变原数组
 
+## Array.prototype.reduce()
+参数：
+- callback
+   - accumulator 累计器
+   - currentValue 当前值
+   - currentIndex 当前索引
+   - array 数组
+- initialValue
+
+回调函数第一次执行时，accumulator和currentValue有两种情况
+- 1. 如果提供了initialValue， accumulator为initialValue， currentValue取数组的第一个值
+- 2. 如果没有提供initialValue， accumulator取数组的第一个值，currentValue取数组的第二个值
+
+返回值
+函数累计处理的结果;
+### 举例
+1. 数组里面所有值得和
+2. 累加对象数组里的值
+3. 将二维数组转为一维
+4. 计算数组中每个值出现的次数
+5. 按属性对Object分类
+6. 使用拓展运算符和initialValue绑定包含在对象数组中的数组
+7. 数组去重
+
+> 箭头函数的用法
+```js
+var f = v => v;
+
+// 等同于
+var f = function (v) {
+  return v;
+};
+```
+1. 没有参数或需要多个参数，就用一个圆括号代表参数部分
+2. 代码块部分多于一条语句，就要使用大括号将他们括起来，并且使用return 语句返回
+3. 如果返回一个对象，就需要使用一个圆括号把对象括起来，不然会报错，因为引擎认为大括号是代码块
+
+
+
 ## Object构建函数的方法
+
 
 
 ## Function.prototype.call()
