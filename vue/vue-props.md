@@ -1,3 +1,54 @@
+## 总结vue props中需要注意的问题
+props default 数组，对象， 函数的默认值写法
+```js
+props: {
+    propA: [String, Number],
+    propB: Number,
+    propC: Boolean,
+    propD: {
+        type: Array,
+        default: () => [],
+    },
+    propE: {
+        type: Object,
+        default: () => ({}),
+    },
+    propF: {
+        type: Function,
+        default: () => {
+            return () => {},
+        },
+    },
+}
+```
+
+## 如何理解vue的单向数据流
+所有的prop都使得其父子prop 之间形成了一个单向下行绑定：父级prop的更新会向下流动到子组件中，但是反过来不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流像难以理解。
+
+额外的，每次父组件发生变化，子组件中所有的prop都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变prop。如果你这样做了，vue会在浏览器的控制台中发出警告。
+
+这里有两种常见的试图改变一个prop的情形:
+1. **这个prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的prop 数据来使用。**这种情况下，最好定义一个本地的data 属性并将这个prop作为其初始值：
+```js
+props: ['initialCounter'],
+data: function () {
+  return {
+    counter: this.initialCounter
+  }
+}
+```
+2. **这个prop以一种原始的值传入且需要进行转换。**在这种情况下，最好使用这个prop的值来定义一个计算属性。
+```js
+props: ['size'],
+computed: {
+  normalizedSize: function () {
+    return this.size.trim().toLowerCase()
+  }
+}
+```
+> 注意在 JavaScript中对象和数组都是通过引用传入的，所以对于一个数组或对象类型的prop来说，在子组件中改变这个对象或数组本身将会影响到父组件的状态
+
+
 ## 在 Vue 中，子组件为何不可以修改父组件传递的 Prop，如果修改了，Vue 是如何监控到属性的修改并给出警告的。
 
 vue设计的单向数据流,数据流动的方向只能是自上而下的;
@@ -51,8 +102,11 @@ Vue2.0子组件不可以修改props传过来的数据，为什么引用类的数
 
 如果修改了，Vue 是如何监控到属性的修改并给出警告的？
 
-## 参考
 
-https://segmentfault.com/q/1010000008525755
-https://www.zhihu.com/question/53576937
+
+## 参考
+- [vuejs文档- prop 的单向数据流](https://cn.vuejs.org/v2/guide/components-props.html#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81)
+- [vue2.0中，子组件修改父组件传递过来得props，该怎么解决？](https://segmentfault.com/q/1010000008525755)
+- [Vue2.0子组件不可以修改props传过来的数据，为什么引用类的数组和对象就可以进行修改呢？](https://www.zhihu.com/question/53576937)
+
 
