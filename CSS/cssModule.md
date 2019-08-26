@@ -73,6 +73,29 @@ Vue中的scoped属性的效果主要是通过PostCss实现的：
 2. 父组件有scoped, 子组件无， 父组件也无法设置子组件的样式， 因为父组件的所有标签都会带有`data-v-957c9522` 唯一标识， 但子组件不会带有这个唯一的标识属性
 3. 父子组件都有，也无法更改样式
 
+### 其他
+**vue中使用scoped中的问题**
+
+使用了scoped
+1. 通过v-html创建的DOM内容不受scoped样式影响，但是你仍然可以使用深度选择器来为他们设置样式;表现上为如果不使用深度选择器来给它们设置样式，则样式不生效
+- [vue-loader 文档 Scoped CSS](https://vue-loader.vuejs.org/zh/guide/scoped-css.html#%E6%B7%B7%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%92%8C%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F)
+- [Scoped styles with v-html](https://medium.com/@brockreece/scoped-styles-with-v-html-c0f6d2dc5d8e)
+
+2. Import style file doesn’t scoped?
+需要将
+```css
+<style scoped>
+    @import "hell.css";
+</style>
+```
+改为
+```js
+<style scoped src="./hell.css"></style>
+```
+- [Import style file doesn’t scoped?](https://forum.vuejs.org/t/import-style-file-doesnt-scoped/7479)
+- [Scope Bootstrap Css in Vue](https://stackoverflow.com/questions/49653931/scope-bootstrap-css-in-vue)
+
+
 ## [CSS Modules](https://github.com/css-modules/css-modules)
 
 ### 什么是CSS Modules
