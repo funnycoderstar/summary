@@ -81,7 +81,7 @@ this.options = _.extend({
 html <script type="text/javascript" src="common.js?a3e1396b501cdd9041be"></script>
 ```
 
-- chunks：允许插入到模板中的一些chunk，不配置此项默认会将entry中所有的thunk注入到模板中。在配置多个页面时，每个页面注入的thunk应该是不相同的，需要通过该配置为不同页面注入不同的thunk；
+- chunks：允许插入到模板中的一些chunk，不配置此项默认会将entry中所有的thunk注入到模板中。在配置多个页面时，每个页面注入的thunk应该是不相同的，需要通过该配置为不同页面注入不同的chunk；如果要设置改值，则必须设置全，比如产生了 3个chunk,你只配置了两个chunk,那么 index.html中只引入两个，加入你配置了4个，但是即使生成只有3个，那么index.html中只引入3个。所以配置该项的时候一定要考虑全面。
 
 - excludeChunks: 这个与chunks配置项正好相反，用来配置不允许注入的thunk。
 
