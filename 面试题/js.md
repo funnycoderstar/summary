@@ -19,3 +19,4 @@ requestAnimationFrame的优点如下: https://zhuanlan.zhihu.com/p/55129100
 8. 缓存
 [https://www.zhihu.com/question/20474326](浏览器允许的并发请求资源数是什么意思？)
 [常见的前端性能优化手段都有哪些？都有多大收益？](https://www.zhihu.com/question/40505685/answer/86898655)
+

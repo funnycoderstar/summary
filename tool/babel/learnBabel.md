@@ -75,14 +75,15 @@ npx node@0.12.8 -v
 ```js
 npm i -D happypack
 ```
-将常用的 loader 替换为 happypack/loader
+## 将常用的 loader 替换为 happypack/loader
 ```js
 const happypack = require('happypack');
 module.exports = {
     module: {
         rules: [
             test: /.js$/,
-            // use: ['babel-loader?cacheDirectory'],
+            // use: ['babel-loader?cacheDirectory'], 之前是使用这种方式直接使用loader
+            // 现在用下面的方式替换成  happypack/loader ， 并使用指定 id 创建的HappyPack插件
             use: ['happypack/loader?id=babel'],
             // 排除node_modules下的目录
             exclude: /node_modules/
@@ -90,7 +91,121 @@ module.exports = {
     }
 }
 ```
-[使用 happypack 提升 Webpack 项目构建速度](https://juejin.im/post/5c6e0c3a518825621f2a6f45)
+## 创建 happypack插件
+
+```js
+const HappyPack = require('happypack');
+module.exports = {
+    module: {
+        rules: [
+            test: /.js$/,
+            // use: ['babel-loader?cacheDirectory'], 之前是使用这种方式直接使用loader
+            // 现在用下面的方式替换成  happypack/loader ， 并使用指定 id 创建的HappyPack插件
+            use: ['happypack/loader?id=babel'],
+            // 排除node_modules下的目录
+            exclude: /node_modules/
+        ]
+    },
+    plugins: [
+        ...,
+        new HappyPack({
+            /**
+             * 必须配置
+             * 
+            */
+            id: 'babel', // id 标识符，要和 rules中指定的id 对应起来
+            // 需要使用的 loader， 用法和rules 中 Loader配置一样
+            // 可以是字符串，也可以是对象形式
+            loaders: ['babel-loaderr?cacheDirectory'] 
+        })
+    ]
+
+}
+```
+
+## 示例
+
+配置单个 loader 时
+```js
+exports.module = {
+    rules: [
+        {
+            test: /.js$/,
+            use: 'happypack/loader?id=babel'
+        }
+    ]
+}
+exports.plugins = [ 
+    new HappyPack({
+        id: 'babel',
+        loaders: ['babel-loader?cacheDirectory']
+    })
+];
+```
+配置多个 loader 时
+```js
+exports.module = {
+    rules: [
+        {
+            test: /.(css|less)$/,
+            use: 'happypack/loader?id=styles'
+        }
+    ]
+}
+exports.plugins = [ 
+    new HappyPack({
+        id: 'styles',
+        loaders: ['style-loader', 'css-loader', 'less-loader']
+    })
+];
+```
+Happypack 配置项 
+- id: String类型，对于 happypack来说是唯一的id标识，用来关联 module.rules的 happypack/loader
+- loaders: Array类型，设置各种 loader配置，与 module.rules中loader配置用法一样
+
+```js
+// 无配置时，可直接使用字符串形式
+new HappyPack({
+    id: 'babel',
+    loaders: ['babel-loader?cacheDirectory']
+})
+// 有配置项时，可以使用对象形式
+new HappyPack({
+    id: 'babel',
+    loaders: [{
+        loader: 'babel-loader',
+        options: {
+            cacheDirectory: true
+        }
+    }]
+})
+```
+- threads: Number类型，指示对应 loader编译文件时同时使用的进程数，默认是 3
+- threadPool: HappyThreadPool对象,代表共享进程池，即多个HappyPack实例都使用同一个共享池中的子进程去处理任务，以防止资源占用过多。
+```js
+// 创建一个happyThreadPool，作为所有 loader 共用的线程池
+const happyThreadPool = HappyPack.ThreadPool({size: 5});
+
+new Happypack({
+    id: 'babel',
+    loaders: [
+        {
+            loader: 'babel-loader',
+            options: {
+                cacheDirectory
+            }
+        }
+    ],
+    threadPool: happyThreadPool,
+})
+
+```
+- verbose: 是否允许happypack输出日志，默认是true
+- verboseWhenProfiling： 是否允许 happypack 在运行 webpack --profile 时输出日志，默认是 false
+- debug: 是否允许 happypack 打印 log 分析信息，默认是 false
+
+
+> [使用 happypack 提升 Webpack 项目构建速度](https://juejin.im/post/5c6e0c3a518825621f2a6f45)
 
 # webpack
 module.noParse
