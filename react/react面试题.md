@@ -59,8 +59,21 @@ function useCount() {
 ## 4. 如何工作以及在什么场景下使用
 
 # react fiba架构
+React Fiba 是对核心算法的一次重新实现;
+为什么要搞?
+reactV15版本的一些局限
+### 同步更新的局限
+更新过程是同步的，可能导致性能问题。因为Javascript 单线程的特点，每个同步任务不能耗时太长，不然就会让程序不会对其他输入作出响应，React的更新过程就是犯了这个禁忌，而React Fiber就是要改变现状
+### react fiber的工作方式
+更新过程碎片化，
 
+fiber,含义是”纤维“，比Thread更细的线，也就是比线程（Thread）控制得更精密的并发处理机制。
+
+[React Fiber是什么](https://zhuanlan.zhihu.com/p/26027085)
 # 生命周期
+添加了: getDerivedFromProps, getSnapshotBeforeUpdate
+准备废弃：componentWillMount， componentWillReceiveProps, componentWillUpdate.为什么要废弃，因为fiber架构，导致上面的这些生命周期函数在一次加载或更新过程中可能被调用多次，
+
 
 
 [为何要在componentDidMount里面发送请求？](https://juejin.im/post/5c70e67f6fb9a049ba42326b)
