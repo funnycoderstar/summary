@@ -557,7 +557,22 @@ async function one2FiveInAsync() {
 one2FiveInAsync();
 
 ```
+## 需要注意的点
+### 多个await命令后面的异步操作，如果不存在继发关系，最好让它们同时触发。
+```js
+// 写法一
+let [foo, bar] = await Promise.all([getFoo(), getBar()]);
 
+// 写法二
+let fooPromise = getFoo();
+let barPromise = getBar();
+
+let foo = await fooPromise;
+let foo = await barPromise;
+```
+上面两种写法，getFoo 和getBar都是同时触发的，这样就会缩短程序的执行时间。
+
+### 
 48. 说一下你对generator的了解？
 ## 概念
 **异步编程解决方案**
