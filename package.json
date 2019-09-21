@@ -1,0 +1,23 @@
+{
+  "name": "front-end-summary",
+  "version": "2.0.0",
+  "description": "> 该总结大多都是平常遇到的问题的积累。[gitbook链接](https://wangyaxing.gitbook.io/front-end-summary/)",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funnycoderstar/Front-end-summary.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funnycoderstar/Front-end-summary/issues"
+  },
+  "homepage": "https://github.com/funnycoderstar/Front-end-summary#readme",
+  "devDependencies": {
+    "vuepress": "^1.1.0"
+  }
+}
