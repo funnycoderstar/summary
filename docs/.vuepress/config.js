@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/summary/',
     title: '前端学习总结', 
     description: '前端学习总结',
     head: [

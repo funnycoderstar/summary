@@ -4,8 +4,9 @@
   "description": "> 该总结大多都是平常遇到的问题的积累。[gitbook链接](https://wangyaxing.gitbook.io/front-end-summary/)",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "publish": "npm run build  && cp -r docs/.vuepress/dist/*  ../deploy/summary/"
   },
   "repository": {
     "type": "git",
