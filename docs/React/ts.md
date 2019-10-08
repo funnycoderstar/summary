@@ -69,7 +69,7 @@ useEffect(() => {
   - useDebugValue
 
 # TS
-## interface
+## interface ！！！
 ### 任意属性
 ### 只读属性
 
@@ -170,7 +170,7 @@ type A = string | number;
 ```
 注意，类型别名与字符串字面量类型都是使用 `type` 进行定义。
 
-## 元组
+## 元组 ！！！！
 数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。
 ```js
 let tom: [string, number] = ['Tom', 25];
@@ -188,7 +188,7 @@ declare 定义的类型只会用于编译时的检查，编译结果中会被删
 外部枚举与声明语句一样，常出现在声明文件中。
 同时使用 declare 和 const 也是可以的：
 
-## 类
+## 类 ！！！
 
 修饰符（Modifiters）：修饰符是一些关键字，用于限定成员或类型的性质。比如`public`表示公有属性和方法
 抽象类（Abstract Class）：抽象类是供 其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现。
@@ -295,6 +295,218 @@ console.log(a.sayHi());
 之前学习过， 接口（interfaces）可以用于对（对象的形状进行描述）。
 这一章中主要介绍接口的另一个用途，对类的一部分行为进行抽象。
 
+### 类实现接口
+### 接口继承接口
+### 接口继承类
+### 混合类型
+
+## 泛型 ！！！
+泛型是指在定义函数，接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特征。
+### 简单的例子
+数组中的每一项都应该是输入的`value`的类型。
+```js
+function createArray<T>(length: number, value: T): Array<T> {
+    const result: T[] = [];
+    for (let i = 0; i < length; i++) {
+        result[i] = value;
+    }
+    return result;
+}
+createArray<string>(3, 'x');
+```
+我们在函数名后添加了<T>，其中`T`用来指代任意输入的类型，在后面的输入 `value: T`和输出`Array<T>`中即可使用了。
+### 多个类型参数
+定义泛型的时候，可以一次定义多个类型参数;
+```js
+function swap<T, U>(tuple: [T, U]): [U, T] {
+    return [tuple[1], tuple[0]];
+}
+swap([7, 'seven']);
+```
+上例中，我们定义了一个 swap 函数，用来交换输出的元组。
+
+### 泛型约束
+在函数内部使用泛型变量的时候，如果事先不知道它是哪种类型，所以不能随意的操作他的属性和方法
+```js
+function loggingIdentity<T>(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+// index.ts(2,19): error TS2339: Property 'length' does not exist on type 'T'.
+```
+泛型T不一定包含属性length,所以编译的时候报错了。
+这时，我们要对泛型进行约束，只允许这个函数传入哪些包含 length 属性的变量。这就是泛型约束。
+```js
+interface Lengthwise {
+  length: number;
+}
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+```
+上例中，我们使用extends约束了泛型`T`必须符合 `Lengthwise`的形状，也就是必须包含`length`属性。
+此时如果调用 loggingIdentity 的时候，传入的 arg 不包含 length，那么在编译阶段就会报错了：
+
+多个类型参数之前也可以相互约束
+```js
+function copyFields<T extends U, U>(target: T, source: U): T {
+    for (const id in source) {
+        target[id] = (<T>source)[id];
+    }
+    return target;
+}
+const x = { a: 1, b: 2, c: 3, d: 4 };
+copyFields(x, { b: 10, d: 20 })
+```
+上例中，我们使用了两个类型参数，其中要求T继承U， 这样就保证了U上不会出现T中不存在的字段。
+
+### 泛型接口
+之前学习过，可以用接口定义一个函数需要符合的形状
+```js
+interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+    return source.search(subString) !== -1;
+}
+```
+当然也可以使用含有泛型的接口来定义函数的形状
+```js
+interface CreateArrayFunc {
+    <T>(length: number, value: T): Array<T>;
+}
+
+let createArray: CreateArrayFunc;
+createArray = function<T>(length: number, value: T): Array<T> {
+    let result: T[] = [];
+    for (let i = 0; i < length; i++) {
+        result[i] = value;
+    }
+    return result;
+}
+
+createArray(3, 'x'); // ['x', 'x', 'x']
+```
+仅一步，我们可以把泛型参数提前到接口名上：
+```js
+interface CreateArrayFunc<T> {
+    (length: number, value: T): Array<T>;
+}
+
+let createArray: CreateArrayFunc<any>;
+createArray = function<T>(length: number, value: T): Array<T> {
+    let result: T[] = [];
+    for (let i = 0; i < length; i++) {
+        result[i] = value;
+    }
+    return result;
+}
+
+createArray(3, 'x'); // ['x', 'x', 'x']
+```
+注意，此时在使用泛型的时候，需要定义泛型的类型；
+
+### 泛型类
+泛型接口类似，泛型也可以用于类的类型定义中。
+```js
+class GenericNumber<T> {
+  zeroValue: T;
+  add: (x: T, y: T) => T;
+}
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function(x, y) { return x + y; };
+```
+### 泛型参数的默认值
+```js
+function createArray<T = string>(length: number, value: T): Array<T> {
+    let result: T[] = [];
+    for (let i = 0; i < length; i++) {
+        result[i] = value;
+    }
+    return result;
+}
+```
+## 声明合并
+
+如果定义了两个相同名字的函数，接口或类，那么它们会合并成一个类型。
+### 函数的合并
+我们可以使用重载定义多个函数的类型；
+```js
+function reverse(x: number): number;
+function reverse(x: string): string;
+function reverse(x: number | string): number | string {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+```
+### 接口的合并
+接口中的属性在合并时会简单的合并到一个接口中
+```js
+interface Alarm {
+  price: number;
+}
+interface Alarm {
+  weight: number;
+}
+```
+相当于
+```js
+interface Alarm {
+  price: number;
+  weight: number;
+}
+```
+注意：合并的属性类型必须是唯一的:
+```js
+interface Alarm {
+    price: number;
+}
+interface Alarm {
+    price: number;  // 虽然重复了，但是类型都是 `number`，所以不会报错
+    weight: number;
+}
+```
+```js
+interface Alarm {
+    price: number;
+}
+interface Alarm {
+    price: string;  // 类型不一致，会报错
+    weight: number;
+}
+
+// index.ts(5,3): error TS2403: Subsequent variable declarations must have the same type.  Variable 'price' must be of type 'number', but here has type 'string'.
+```
+
+接口中方法的合并，与函数的合并一样
+```js
+interface Alarm {
+    price: number;
+    alert(s: string): string;
+}
+interface Alarm {
+    weight: number;
+    alert(s: string, n: number): string;
+}
+```
+相当于
+```js
+interface Alarm {
+    price: number;
+    weight: number;
+    alert(s: string): string;
+    alert(s: string, n: number): string;
+}
+```
+### 类的合并
+和接口的和并规则一致。
 
 ## tsconfig.json
 目录中存在 `tsconfig.json`文件，表明该目录是 TypeScript项目的根目录。 tsconfig.json文件指定了根文件和编译项目所需的编译器选项。
