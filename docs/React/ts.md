@@ -6,6 +6,7 @@
 hooks
 React 怎么知道 useState 对应的是哪个组件，因为我们并没有传递 this 给 React。
 - [React 是如何把对 Hook 的调用和组件联系起来的？](https://zh-hans.reactjs.org/docs/hooks-faq.html#under-the-hood)
+每个组件内部都有一个记忆单元格列表。它们只不过是我们用来存储一些数据的JavaScript对象。当你用`useState()`调用一个Hook的时候，它会读取当前的单元格（或在首次渲染时将其初始化），然后把指针移动到下一个。这就是多个`useState()`调用会得到各自独立的本地State的原因
 
 - [我应该使用单个还是多个 state 变量？](https://zh-hans.reactjs.org/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)
 现在使用 useState, 是直接替换原来的state, 而 class的this.setState 会把更新后的字段合并入对象中。
@@ -36,6 +37,16 @@ useEffect(() => {
 如果你传入了一个空数组，effect内部的props和state 就会一直拥有其初始值。
 [eslint-plugin-react-hooks]()，[exhaustive-deps]()， 规则会在添加错误依赖时发出警告并给出修复建议。
 
+## useEffect的第二个参数
+有三种情况
+1. 什么都不传，组件每次 render 之后 useEffect 都会调用，相当于 componentDidMount 和 componentDidUpdate
+2. 传入一个空数组 [], 只会调用一次，相当于 componentDidMount 和 componentWillUnmount
+3. 传入一个数组，其中包括变量，只有这些变量变动时，useEffect 才会执行
+
+作者：landluck
+链接：https://juejin.im/post/5d985deae51d4577f9285c2f
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 # Hook是怎么工作的。
 ## 两次渲染间， React如何知道哪个 useState调用对应与哪个state变量?
@@ -68,6 +79,36 @@ useEffect(() => {
   - useLayoutEffect
   - useDebugValue
 
+## useMemo
+类似 vue 的 computed 计算属性类似，都是根据依赖的值计算出结果，当依赖的值未发生变化时，不触发状态改变
+```js
+import React, { useState, useMemo } from 'react';
+function Example() {
+    const [count, setCount] = useState(0);
+    const add = useMemo(() => {
+      return count + 1
+    }, [count])
+    return (
+      <div>
+        点击次数: { count } 
+        次数加一: { add }
+        <button onClick={() => { setCount(count + 1)}}>点我</button>
+      </div>
+      )
+}
+
+export default Example;
+```
+上面的例子中，useMemo也支持传入第一个参数，用法和useEffect类似
+1. 不传数组，每次更新都会重新计算
+2. 空数组，只会计算一次
+3. 依赖对应的值，当对应的值发生变化时，才会重新计算（可以依赖另一个useMemo返回的值）
+
+需要注意的是，useMemo会在渲染的时候执行，而不是渲染之后执行，这一点和 useEffect 有区别，所以 useMemo 不建议有 副作用相关的逻辑
+
+同时，useMemo 可以作为性能优化的手段，但不要把它当成语义上的保证，将来，React 可能会选择“遗忘”以前的一些 memoized 值，并在下次渲染时重新计算它们
+
+[呕心沥血，一文看懂 react hooks](https://juejin.im/post/5d985deae51d4577f9285c2f)
 # TS
 ## interface ！！！
 ### 任意属性

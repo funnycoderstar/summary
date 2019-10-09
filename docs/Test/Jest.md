@@ -163,6 +163,26 @@ beforeEach() 和 afterEach()会在每个测试用例之前和之后执行。
 Jest内置了 Mock 机制，提供了多种 mock方式已应对各种需求。
 
 
+## 快照测试（Snapshot Testing）
+每当你想要确保你的UI不会有意外的改变，快照测试是非常有用的工具。
+
+## jest-puppeteer
+### [puppeteer](https://github.com/GoogleChrome/puppeteer)
+是什么?
+是一个Node库，它提供了高级API并通过 DevTools协议来控制 Chrome(或Chromium)；
+
+能做什么?
+- 生成网页截图或PDF
+- 抓取单页应用（SPA）执行并渲染
+- 做表单的自动提交，UI的自动化测试，模拟键盘输入
+- 用浏览器自带的一些调试工具和性能分析工具帮助我们分析问题。
+- 用最新的无头浏览器环境里做测试，使用最新浏览器特性。
+
+### 参考
+- [Puppeteer-无头浏览器简介](https://zhuanlan.zhihu.com/p/40103840)
+- [puppeteer的介绍以及初步应用](https://www.jianshu.com/p/085e3de8596c)
+
+## jest.config.js
 
 
 ## 参考
@@ -170,4 +190,5 @@ Jest内置了 Mock 机制，提供了多种 mock方式已应对各种需求。
 - [React 测试入门教程](http://www.ruanyifeng.com/blog/2016/02/react-testing-tutorial.html)
 - [Jest 单元测试入门](https://www.cnblogs.com/SamWeb/p/11454923.html)
 - [使用Jest测试JavaScript (入门篇)](https://segmentfault.com/a/1190000016232248)
+- [使用Jest测试JavaScript(Mock篇)](https://segmentfault.com/a/1190000016717356)
 - [测试框架 Jest 实例教程](https://blog.whezh.com/jest-tutorial/)
