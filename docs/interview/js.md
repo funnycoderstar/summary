@@ -19,7 +19,7 @@ set内部通过使用 Object.js()来判断两个数据项是否相等，唯一�
 5. JWT优缺点, JWT细节，适用场景
 
 6. JS数据类型
-一共有7中数据类型，分为基本数据类型(undefined, null, 不是new出来的 number, boolean, string, Symbol)，引用类型（function, object, array）
+一共有7中数据类型，分为基本数据类型(undefined, null, 不是new出来的 number, boolean, string, Symbol, BigInt)，引用类型（function, object, array）
 
 基本数据类型按值存储在栈中的（undefined, null, 不是new出来的 number, boolean, string)，每种类型数据占用的内存空间大小是确定的，由系统自动分配和释放，好处就是，内存更容易回收，和堆相比，更加更衣管理内存。
 引用类型存在在堆内存中，其实引用类型的指针是存在栈内存中，当我们想要访问引用类型的值时，先需要从栈中获取对象的地址指针，然后在通过地址指针找到堆中锁存储的数据。

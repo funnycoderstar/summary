@@ -67,7 +67,16 @@ console.log(a); // [ 1, NaN, NaN ]
 ```
 通常情况下, parseInt函数只需要传递一个参数, 但实际上, parseInt可以有两个参数,第二个参数是进制数;
 map方法在调用callback函数时, 会给它传递三个参数: 当时正在遍历的元素, 元素索引,原数组本身;
-第三个参数parseInt会忽视, 但第二个参数不会,parseInt把传过来的索引值当成进制数来使用.从而返回了NaN.
+第三个参数parseInt会忽视, 但第二个参数不会,parseInt把传过来的索引值当成进制数来使用.从而返回了NaN，下面是迭代步骤的简明示例
+
+下面让我们来讨论解决方案：
+```js
+// parseInt(string, radix) -> map(parseInt(value, index))
+/*  first iteration (index is 0): */ parseInt("1", 0); // 1
+/* second iteration (index is 1): */ parseInt("2", 1); // NaN
+/*  third iteration (index is 2): */ parseInt("3", 2); // NaN
+```
+
 
 ```js
 function returnInt(element) {
