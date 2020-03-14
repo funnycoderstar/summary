@@ -13,6 +13,7 @@
 2. keep-alive和传统的区别
 
 ![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1559057504279.png)
+
 keep-alive的连接不必在每次请求都开启一个新的连接
 
 3. keep-alive如何配置
@@ -30,6 +31,7 @@ keepalive_timeout //服务器接收在10s以内的所有connection复用超过10
 
 5. 多路复用和keep alive区别
 ![img](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1559269633983.png)
+
 1）线头阻塞（Head-of-Line Blocking），HTTP1.X虽然可以采用Keep alive来解决复用TCP的问题，但是还是无法解决请求阻塞；
 2）所谓请求阻塞意思就是一条 TCP 的connection在同一时间只允许一个请求经过，这样假如后续请求想要复用这个链接就必须等到前一个完成才行，正如上图左边表示的。
 3）之所以有这个问题就是因为HTTP1.x需要每条请求都是可以识别，按顺序发送，否则serve就无法判断该响应哪个具体的请求。

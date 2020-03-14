@@ -521,7 +521,7 @@ exports.bad = function (arg) {
 
 ### ES6 模块的循环加载
 ```js
-/ a.mjs
+// a.mjs
 import {bar} from './b';
 console.log('a.mjs');
 console.log(bar);

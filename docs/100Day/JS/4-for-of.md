@@ -241,7 +241,5 @@ for(let v in arr) {
 `Day5: Generator`
 
 
-for...of 不只是用来遍历数组的，只要有`iterator` 接口的数据结构都可以用它来遍历。一个数据结构只要部署了`Symbol.iterator`属性，就被视为具有 `iterator` 接口。`iterator`的实现思想来源于 `单向链表`
-
 
 

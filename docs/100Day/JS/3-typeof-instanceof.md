@@ -27,7 +27,7 @@ typeof {}; // "object"
 typeof []; // "object" 
 typeof new Date(); // "object"
 
-typeof Symbol; // "Symbol"
+typeof Symbol(); // "Symbol"
 typeof 123n // 'bigint'
 ```
 这里的类型值的是值，变量是没有类型的，变量可以随时持有任何类型的值。JavaScript中变量是“弱类型”的，一个变量可以现在被赋值为 字符串类型，随后又被赋值为数字类型。
