@@ -1,29 +1,33 @@
-function Foo(name, age) {
-    this.name = name;
-    this.age = age;
-}
-Foo.prototype.getName = function() {
-    this.name;
-}
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var thirdMax = function(nums) {
+    let max = nums[0];
+    let secondMax = null;
+    let thirdMax = null;
 
-function Foo1(name, age) {
-    this.name = name;
-    this.age = age;
-}
-Foo1.prototype.getAge = function() {
-    this.age;
-}
+    for(let i = 1; i < nums.length; i++) {
+        if(nums[i] > max) {
+            thirdMax = secondMax;
+            secondMax = max;
+            max = nums[i];
+        } else if(nums[i] < max  && (secondMax === null || nums[i] > secondMax)) {
+            thirdMax = secondMax;
+            secondMax = nums[i];
+        } else if(nums[i] < secondMax  && (thirdMax === null || nums[i] > thirdMax)) {
+            thirdMax = nums[i];
+        }
+    }
+    
+    return thirdMax === null ? max : thirdMax;
+};
 
-const foo = new Foo('a', 10);
-Object.setPrototypeOf(Foo.prototype, Foo1.prototype);
-foo.getName();
-
-function Foo2(name, age) {
-    this.name = name;
-    this.age = age;
-}
-Foo2.prototype = Foo.prototype;
-console.log(Foo2.prototype.getName);
-const foo2 = new Foo2('aaa');
-
-Foo2.getName();
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var findKthLargest = function(nums, k) {
+    
+};

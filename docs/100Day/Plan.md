@@ -7,15 +7,30 @@
 - class的原理
 - var const let
 
+- css中的一些单位 em rem，vw，calc
 
-- Promise
+- promise
 - vue和react谈谈区别和选型考虑
 - 事件循环
 - 原型链
 - 深拷贝浅拷贝
+https://juejin.im/post/59ac1c4ef265da248e75892b
 - 节流和防抖
-- this
-- pwa, web-worker
+    - 节流和防抖
+    - loadsh源码分析
+- pwa，web-worker
+- js数据类型
+- js数据类型转换
+    - 
+- this,bind，apply 和 call
+    - 原型链，Function的实例方法
+    - this
+    - 性能
+    - 
+https://juejin.im/post/59bfe84351882531b730bac2
+- 函数科里化
+    - 闭包
+    - 
 
 - docker
 - 反向代理

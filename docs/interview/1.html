@@ -5,35 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .wrap {
+            width: 800px;
+        }
+        .element {
+            /* 16:9宽高比，则设padding-bottom:56.25% */
+            /* height: 0px, 防止矩形被里面的内容撑出多余的高度*/
+            width: 100vw; 
+            height: 0px; 
+            padding-bottom: 56.25%;
+            background: pink;
+        }
+    </style>
 </head>
 <body>
-    <ul id="example-1">
-        <li v-for="item in items">
-            {{ item }}
-        </li>
-    </ul>
-    
+   <!-- <div class="wrap">
+        <div class="element">
+
+        </div>
+   </div> -->
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="http://cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
 <script>
-    var vm = new Vue({
-        el: '#example-1',
-        data: {
-            items: ['a', 'b', 'c']
-        },
-    })
-    // 直接修改数据不是实时响应
-    setTimeout(() => {
-        vm.items[1] = 'x';
-        vm.items[3] = 'd';
-        console.log(vm.items);
-        // ['a', 'x', 'c', 'd']
-    }, 500);
-    // 使用 $set 修改数据是实时响应
-    // setTimeout(() => {
-    //     vm.$set(vm.items, 1, 'x')
-    //     vm.$set(vm.items, 3, 'd')
-    //     console.log(vm.items);
-    // }, 500);
+
+const addThreeNumbers = (x, y, z) => x + y + z;
+const curriedAddaddThreeNumbers = R.curry(addThreeNumbers);
+const f = curriedAddaddThreeNumbers(1, 2);
+console.log(f(3));
 </script>
 </html>

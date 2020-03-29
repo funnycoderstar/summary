@@ -1,8 +1,10 @@
 ## 前言
-
 本周发起了一个100天前端进阶计划，每天一个知识点，搞明白背后的原理，这是第二周的总结，请注意查收。
 
 以面试题的形式看自己本周掌握了多少。
+
+
+首先要给我们自己鼓个掌，坚持10天了^_^
 
 ## 1.下面代码输出什么
 ```js
@@ -21,19 +23,14 @@ const freddie = new Chameleon({ newColor: 'purple' })
 freddie.colorChange('orange')
 ```
 
-<details><summary><b>答案</b></summary>
-<p>
-
 ### 答案：TypeError
 解析：
 colorChange 是一个静态方法。静态方法被设计为只能被创建它们的构造器使用（也就是 Chameleon），并且不能传递给实例。因为 freddie 是一个实例，静态方法不能被实例使用，因此抛出了 TypeError 错误。
 
 > 详细分析请看 [详解ES6中的class](https://github.com/funnycoderstar/blog/issues/111)
 
-</p>
-</details>
 
----
+
 ## 2.下面代码输出什么
 ```js
 function setName(obj) {
@@ -46,9 +43,6 @@ setName(person);
 console.log(person.name);
 ```
 
-<details><summary><b>答案</b></summary>
-<p>
-
 ### 答案： luckyStar
 解析：
 在函数内部修改了参数的值，但是原始的引用仍然保持未变。
@@ -56,10 +50,7 @@ console.log(person.name);
 
 > 详细分析请看 [理解var，const，let](https://github.com/funnycoderstar/blog/issues/114)
 
-</p>
-</details>
 
----
 ## 3. 下面代码输出什么
 ```js
 var name = 'Tom';
@@ -73,42 +64,23 @@ var name = 'Tom';
 })();
 ```
 
-<details><summary><b>答案</b></summary>
-<p>
 
 ### 答案： Goodbye Jack
+
 解析：
 立即执行函数的中的变量 name 的定义被提升到了顶部，并在初始化赋值之前是 `undefined`，所以` typeof name == 'undefined'`
 
 > 详细分析请看 [理解var，const，let](https://github.com/funnycoderstar/blog/issues/114)
 
-</p>
-</details>
-
----
 
 ## 4. async原理是什么
 
-<details><summary><b>答案</b></summary>
-<p>
-
-#### 答案：
 `async` 函数原理就是 `Generator`函数 和 自动执行器包装了一下。具体的来说：async就是一个generator 在 promise 的resolve状态下 执行next 并把值当做next的参数 封装起来的语法糖。
-
 
 > 详细分析请看 [async原理解析](https://github.com/funnycoderstar/blog/issues/110)
 
-</p>
-</details>
-
----
-
-
 ### 5.实现一个`sleep`
 每隔1秒输出 1， 2， 3， 4， 5
-
-<details><summary><b>答案</b></summary>
-<p>
 
 #### 答案：
 
@@ -129,16 +101,8 @@ async function one2FiveInAsync() {
 one2FiveInAsync();
 ```
 
-</p>
-</details>
-
----
-
 ### 6.实现一个红绿灯： 红灯2秒，黄灯1秒，绿灯3秒
 
-<details><summary><b>答案</b></summary>
-<p>
-  
 ```js
 function sleep(duration) {
     return new Promise(resolve => {
@@ -159,16 +123,7 @@ main();
 
 > 详细分析请看 [async原理解析](https://github.com/funnycoderstar/blog/issues/110)
 
-</p>
-</details>
-
----
-
-
 ### 7.使用 `async` 实现` Promise.all()`的效果
-
-<details><summary><b>答案</b></summary>
-<p>
 
 #### 答案：
 ```js
@@ -185,18 +140,9 @@ let bar = await barPromise;
 
 解析： 上面两种写法，getFoo 和 getBar 都是同时触发，这样就会缩短程序的执行时间。
 
-
 > 详细分析请看 [async原理解析](https://github.com/funnycoderstar/blog/issues/110)
 
-</p>
-</details>
-
----
-
 ## 8.  class的原理是什么，什么是静态方法/属性，super是什么
-
-<details><summary><b>答案</b></summary>
-<p>
 
 - class是一个语法糖，其底层还是通过 `构造函数` 去创建的。
 - 类的所有方法都定义在类的prototype属性上面。
@@ -209,13 +155,8 @@ let bar = await barPromise;
 
 > 详细分析请看 [详解ES6中的class](https://github.com/funnycoderstar/blog/issues/111)
 
-</p>
-</details>
 
 ## 9. var，let，const区别是什么
-
-<details><summary><b>答案</b></summary>
-<p>
 
 - var 会存在变量提升
 - let和const都是块级作用域，不存在变量提升
@@ -223,10 +164,6 @@ let bar = await barPromise;
 
 > 详细分析请看 [理解var，const，let](https://github.com/funnycoderstar/blog/issues/114)
 
-</p>
-</details>
-
----
 
 ## 10.算法题
 - [搜索二维矩阵II](https://github.com/funnycoderstar/leetcode/issues/47)

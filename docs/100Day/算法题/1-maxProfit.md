@@ -129,7 +129,7 @@ var maxProfit = function(prices) {
         if(prices[i] >= sell) {
             sell = prices[i];
         } else {
-            // prices[i]小的时候卖出
+            // prices[i]小的时候m买入
             result += sell - buy;
             // 在此时初始化
             buy = prices[i];

@@ -1,170 +1,299 @@
-// const obj = {
-//     name: 'app',
-//     age: '18',
-//     a: {
-//         b: 1,
-//         c: 2,
-//     },
-// }
-// const p = new Proxy(obj, {
-//     get(target, propKey, receiver) {
-//         console.log('你访问了' + propKey);
-//         if (!(propKey in target)) {
-//             console.log(111);
-//             // target[key] = Tree();  // auto-create a sub-Tree
-//           }
-//         return Reflect.get(target, propKey, receiver);
-        
-//     },
-//     set(target, propKey, value, receiver) {
-//         console.log('你设置了' + propKey);
-//         console.log('新的' + propKey + '=' + value);
-//        return Reflect.set(target, propKey, value, receiver);
-//     }
-// });
-// p.age = '20';
-// console.log(p.age);
-// p.newPropKey = '新属性';
-// console.log(p.newPropKey);
-// console.log(p.a.b);
-// p.a.d = '这是obj中a的属性';
-// console.log(p.a.d);
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ * // 找出链表的中间节点
+ */
+var middleNode = function(head) {
+    let fast = head;
+    let slow = head;
+    while(fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+};
 
-// vue是深度observe的，会对这个再次执行observe，维护另一个数组
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {number[]}
+ * // 从尾到头打印链表
+ */
+var reversePrint = function(head) {
+    let result = [];
+    let newHead = head;
+    while(newHead) {
+        result.unshift(newHead.val);
+        newHead = newHead.next;
+    }
+    return result;
+};
 
-// var deepApply = function(receiver, property, data){
-//     var proxy = proxify();
-//     var props = Object.keys(data);
-//     var size = props.length;
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ * // 反转链表
+ * 双指针
+ * preNode是指前面的一个节点
+ */
+var reverseList = function(head) {
+    let prevNode = null;
+    while(head) {
+        let tempNode = head.next;
+        head.next = prevNode;
+        prevNode = head;
+        head = tempNode;
+    }
+    return prevNode;
+    
+};
 
-//     for(var i = 0; i < size; i++){
-//         property = props[i];
-//         proxy[property] = data[property];
-//     }
-//     return proxy;
-// };
-// var handler = {
-//     get: function(target, property, receiver){
-//         console.log(1111, property);
-//         if(!(property in target)){
-//             console.log(1111);
-//             target[property] = proxify();
-//         }
-//         return Reflect.get(target, property, receiver);
-//     },
-//     set: function(target, property, value, receiver){
-//         console.log(5555, property);
-//         // extend proxify to appended nested object
-//         if(({}).toString.call(value) === "[object Object]") {
-//             value = deepApply(receiver, property, value);
-//         }
-//         return Reflect.set(target, property, value, receiver);
-//     },
-// };
-// function proxify( defprop = {} ){
-//     return new Proxy(defprop, handler);
-// };
-// const test = proxify(obj);
-// test.a.b = '666';
-// console.log(test.a.b);
-
-// function proxify(event) {
-//     return isPrimitive(event) ? event : new Proxy(event, { get: getProp });
-//   }
-//   function isPrimitive(v) {
-//       const value = v == null || (typeof v !== 'function' && typeof v !== 'object');
-//          console.log(value);
-//          return value;
-//   }
-//   function getProp (target, property) {
-//     if (property in target) {
-//       return proxify(target[property]);
-//     } else {
-//       return proxify({});
-//     }
-//   }
-
-// const aaa = proxify(obj);
-// console.log(aaa);
-// console.log(aaa.a.b);
-
-function createDeepProxy(target, handler) {
-    const preproxy = new WeakMap();
-  
-    function makeHandler(path) {
-      return {
-        set(target, key, value, receiver) {
-          if (typeof value === 'object') {
-            value = proxify(value, [...path, key]);
-          }
-          target[key] = value;
-  
-          if (handler.set) {
-            handler.set(target, [...path, key], value, receiver);
-          }
-          return true;
-        },
-  
-        deleteProperty(target, key) {
-          if (Reflect.has(target, key)) {
-            unproxy(target, key);
-            let deleted = Reflect.deleteProperty(target, key);
-            if (deleted && handler.deleteProperty) {
-              handler.deleteProperty(target, [...path, key]);
-            }
-            return deleted;
-          }
-          return false;
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ * 回文链表：双指针
+ */
+var isPalindrome = function(head) {
+    if(head === null || head.next === null) {
+        return true;
+    }
+    let mid = head;
+    let pre = null;
+    let reversed = null;
+    // 快慢指针找出中间节点
+    while(head !== null && head.next !== null) {
+        pre = mid;
+        mid = mid.next;
+        head = head.next.next;
+        // 反转前半段
+        pre.next = reversed;
+        reversed = pre;
+    }
+    // 如果是奇数个
+    if(head) {
+        mid = mid.next;
+    }
+    // 将反转完之后的前半段和后半段做对比
+    while(mid) {
+        if(reversed.val !== mid.val) {
+            return false;
         }
-      }
+        reversed = reversed.next;
+        mid = mid.next;
     }
-  
-    function unproxy(obj, key) {
-      if (preproxy.has(obj[key])) {
-        // console.log('unproxy',key);
-        obj[key] = preproxy.get(obj[key]);
-        preproxy.delete(obj[key]);
-      }
-  
-      for (let k of Object.keys(obj[key])) {
-        if (typeof obj[key][k] === 'object') {
-          unproxy(obj[key], k);
+    return true;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * 1290. 二进制链表转整数
+ * @param {ListNode} head
+ * @return {number}
+ */
+var getDecimalValue = function(head) {
+    let result = 0
+    while(head) {
+        result = result * 2 +  head.val;
+        head = head.next;
+    }
+    return result;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ * 面试题 02.01. 移除重复节点
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var removeDuplicateNodes = function(head) {
+    const set = new Set();
+    let prev = null;
+    let current = head;
+    while(current) {
+        if(set.has(current.val)) {
+            prev.next = current.next;
+            current = prev.next;
+        } else {
+            set.add(current.val);
+            prev = current;
+            current = current.next;
         }
-      }
-  
     }
-  
-    function proxify(obj, path) {
-      for (let key of Object.keys(obj)) {
-        if (typeof obj[key] === 'object') {
-          obj[key] = proxify(obj[key], [...path, key]);
+    return head;
+};
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ * 203. 移除链表元素
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} val
+ * @return {ListNode}
+ */
+var removeElements = function(head, val) {
+    let linknode = new ListNode(0);
+    linknode.next = head;
+    let prev = linknode;
+    let current = linknode;
+    while(current) {
+        if(current.val === val) {
+            prev.next = current.next;
+        } else {
+            prev = current;
         }
-      }
-      let p = new Proxy(obj, makeHandler(path));
-      preproxy.set(p, obj);
-      return p;
+        current = current.next;
     }
-  
-    return proxify(target, []);
-  }
-  
-  let obj = {
-    foo: 'baz',
-  }
-  
-  
-  let proxied = createDeepProxy(obj, {
-    set(target, path, value, receiver) {
-      console.log('set', path.join('.'), '=', JSON.stringify(value));
-    },
-  
-    deleteProperty(target, path) {
-      console.log('delete', path.join('.'));
+    return linknode.next;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ * 面试题 02.02. 返回倒数第 k 个节点
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {number}
+ * 初始化: 使用双指针，i, j
+ * 构建双指针距离: 先将i向后移动k次，此时 i，j的距离为k
+ * 双指针共同移动: 同时移动i，j，直到i指向null，此时j位置的val就是答案
+ * 返回值:  https://pic.leetcode-cn.com/c11759b47df01442d2bacdc3a693531e1c5e905c741307f4bf61efffb08ce15d-aa.png
+ */
+var kthToLast = function(head, k) {
+    let p = head;
+    for(let i = 0; i < k; i++) {
+        p = p.next;
     }
-  });
-  
-  proxied.foo = 'bar';
-  proxied.deep = {}
-  proxied.deep.blue = 'sea';
-  delete proxied.foo;
-  delete proxied.deep; // triggers delete on 'deep' but not 'deep.blue'
+    while(p) {
+        p = p.next;
+        head = head.next;
+    }
+    return head.val;
+    
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode}
+ * 面试题22. 链表中倒数第k个节点
+ * 解法同上
+ */
+var getKthFromEnd = function(head, k) {
+    let p = head;
+    for(let i = 0; i < k; i++) {
+        p = p.next;
+    }
+    while(p) {
+        p = p.next;
+        head = head.next;
+    }
+    return head;
+    
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * 面试题 02.03. 删除中间节点
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+var deleteNode = function(node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/** 
+ * 面试题52. 两个链表的第一个公共节点
+ * @param {ListNode} headA
+ * @param {ListNode} headB
+ * @return {ListNode}
+ * https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1585472571147.png?width=640&height=307&imageView2/1/q/80/w/420/h/201
+ */
+var getIntersectionNode = function(headA, headB) {
+    let node1 = headA; 
+    let node2 = headB;
+    while(node1 !== node2) {
+        node1 = node1 ? node1.next : headB;
+        node2 = node2 ? node2.next : headA;
+    }
+    return node1;
+};
+function ListNode(val) {
+        this.val = val; 
+        this.next = null;
+    }
+const testlist = new ListNode(1);
+testlist.next =  new ListNode(3);
+testlist.next =  new ListNode(2);
+console.log(middleNode(testlist));
+
+
