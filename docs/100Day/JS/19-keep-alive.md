@@ -21,7 +21,7 @@
 ## 实现原理
 
 ### 源码解析
-`<keep-alive>`是vue源码中实现的一个组件， 我们可以从源码入手进行分析，基于vue 2.6.11 版本, 源码位置[src/core/components/keep-alive.js](https://github.com/vuejs/vue/blob/dev/src/core/components/keep-alive.js "src/core/components/keep-alive.js")
+`<keep-alive>`是vue源码中实现的一个组件， 我们可以从源码入手进行分析，基于vue 2.6.11 版本, 源码位置[src/core/components/keep-alive.js](https://github.com/vuejs/vue/blob/dev/src/core/components/keep-alive.js)
 ```js
 // <keep-alive> 组件的实现也是一个对象
 export default {
