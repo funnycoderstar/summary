@@ -100,4 +100,3 @@ var surfaceArea = function(grid) {
     return result;
 };
 
-surfaceArea([[2]])

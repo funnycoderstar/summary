@@ -6,32 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .wrap {
-            width: 800px;
-        }
-        .element {
-            /* 16:9宽高比，则设padding-bottom:56.25% */
-            /* height: 0px, 防止矩形被里面的内容撑出多余的高度*/
-            width: 100vw; 
-            height: 0px; 
-            padding-bottom: 56.25%;
-            background: pink;
-        }
+       
     </style>
 </head>
 <body>
-   <!-- <div class="wrap">
-        <div class="element">
-
-        </div>
-   </div> -->
+  <div>
+      
+  </div>
 </body>
-<script src="http://cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
-<script>
 
-const addThreeNumbers = (x, y, z) => x + y + z;
-const curriedAddaddThreeNumbers = R.curry(addThreeNumbers);
-const f = curriedAddaddThreeNumbers(1, 2);
-console.log(f(3));
-</script>
 </html>
