@@ -1,63 +1,22 @@
-## 动态规划类题目
 
-- 5.最长回文子串
-- 3.无重复字符的最长子串
-- 14.最长公共前缀
-- 11.盛最多水的容器
-- 最大子序和
 
+JavaScript实现LeetCode第5题：最长回文子串
 ## 题目描述
-给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
 
-说明：你不能倾斜容器，且 n 的值至少为 2。
+给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
 
-![leetcode](https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/07/25/question_11.jpg)
-
-图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
-
-示例：
+示例 1：
 ```js
-输入：[1,8,6,2,5,4,8,3,7]
-输出：49
+输入: "babad"
+输出: "bab"
+```
+注意: "aba" 也是一个有效答案。
+示例 2：
+```js
+输入: "cbbd"
+输出: "bb"
 ```
 
-## 思路
-使用双指针的方法，初始时，left指向最左边，right指向最右边，每次移动 对应数字比较小的指针，容纳的水量为 `两个指针指向的数字中较小值∗指针之间的距离`
-
-![img](http://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1587199211576.gif?width=624&height=375&imageView2/1/q/80)
-
-```js
-/**
- * @param {number[]} height
- * @return {number}
- */
-var maxArea = function(height) {
-    // 在初始时，左右指针分别指向数组的左右两端
-    let l = 0;
-    let r = height.length - 1;
-    let maxArea = 0;
-
-    while(l < r) {
-        // 容纳的水量为 两个指针指向的数字中较小值∗指针之间的距离
-        maxArea = Math.max(maxArea, (r - l) * Math.min(height[r], height[l]));
-        // 移动对应数字较小的那个指针
-        if(height[r] >= height[l]) {
-            l++;
-        } else {
-            r--;
-        }
-    }
-    return maxArea
-};
-```
-- 时间复杂度：O(N)，双指针总计最多遍历整个数组一次。
-- 空间复杂度：O(1)，只需d要额外的常数级别的空间。
-
-## 参考
-- [leetcode官方题解](https://leetcode-cn.com/problems/container-with-most-water/solution/sheng-zui-duo-shui-de-rong-qi-by-leetcode-solution/)
-
-
-## 5.最长回文子串
 
 ## 思路
 
@@ -119,6 +78,10 @@ var longestPalindrome = function(s) {
 
 };
 ```
+
+- 时间复杂度：O(n^2)，由于围绕中心来扩展回文会耗去 O(n)O(n) 的时间，所以总的复杂度为 O(n^2)
+- 空间复杂度：O(1)O(1)。
+
 ### 2. 动态规划法
 用 boolean dp[l][r] 表示从 l 到 r 这段是否为回文。试想如果 dp[l][r] = true，如果要判断 dp[l-1][r+1]是否为回文。只需要判断字符在 (l-1)和(r+1)两个位置是否为相同的字符，是不是减少了很多计算;
 
@@ -131,20 +94,29 @@ var longestPalindrome = function(s) {
  * @param {string} s
  * @return {string}
  */
+/**
+ * @param {string} s
+ * @return {string}
+ */
 var longestPalindrome = function(s) {
     if(!s || s.length < 2) {
         return s;
     }
     let strLen = s.length;
+    // 最长回文串的起点
     let maxStart = 0;
+    // 最长回文串的终点
     let maxEnd = 0;
+    // 最长回文串的长度
     let maxLen = 1;
-    let dp = (new Array(strLen)).fill(false);
+
+    let dp = Array.from(new Array(strLen),() => new Array(strLen).fill(false));
     for(let r = 1; r < strLen; r++) {
         for(let l = 0; l < r; l++) {
             // r-l <= 2 为了兼容 aa（r-l=1）和aba（r-l=2）这两种回文串
             if(s[l] === s[r] && (r-l <= 2 || dp[l + 1][r - 1])) {
                 dp[l][r] = true;
+                // 如果 此时的长度 > maxLen, 则更新 maxLen的值。
                 if(r - l + 1 > maxLen) {
                     maxLen = r - l + 1;
                     maxStart = l;
@@ -157,60 +129,14 @@ var longestPalindrome = function(s) {
 
 };
 ```
+尝试了一下，花费的时间比第一个的中心拓展法要多，还待研究。
 
-## 斐波那契数列
+### Manacher(马拉车)算法
 
-```js
-function Fibonacci(n) {
-    // const dp = [0, 1];
-    // for(let i = 2; i <= n; i++) {
-    //     dp[i] = dp[i -1] + dp[i-2];
-    // }
-    // return dp[n];
+一个复杂度为 O(n) 的 Manacher 算法.
 
-    let a = 0;
-    let b = 1;
-    
-    while(n > 1) {
-        [b, a] = [a, b];
-        b = a + b;
-        n--;
-    }
-    return b;
+该算法暂时还没完全搞懂，可以去网上搜一下很多讲解。
 
-}
-
-
-// console.log(Fibonacci(55));
-
-
-
-```
-
-## 最大子序和
-
-```js
-function maxSum(arr) {
-    if(!arr.length) {
-        return 0;
-    }
-    // let cur = arr[0];
-    // let max = arr[0];
-    // for(let i = 1; i < arr.length; i++) {
-    //     cur = Math.max(arr[i], cur+arr[i]);
-    //     max = Math.max(max, cur);
-    // }
-    // return max;
-    const dp = [arr[0]];
-    for(let i = 1; i < arr.length; i++) {
-        dp[i] = Math.max(arr[i], dp[i - 1] + arr[i]);
-
-    }
-    return Math.max(...dp);
-
-
-}
-console.log(maxSum([1, 2, -2, 5, 111]));
-```
 ## 参考
-[动态规划、Manacher 算法](https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-dong-tai-gui-hua-by-liweiwei1419/)
+- [有什么浅显易懂的Manacher Algorithm讲解？](https://www.zhihu.com/question/37289584?sort=created)
+- [leetcode官方题解](https://leetcode-cn.com/problems/longest-palindromic-substring/solution/5-zui-chang-hui-wen-zi-chuan-by-alexer-660/)
