@@ -65,3 +65,7 @@ render -> diff -> 更新DOM
 
 
 ## React中函数式编程的思想
+
+
+
+- [【译】Redux 还是 Mobx，让我来解决你的困惑！](https://segmentfault.com/a/1190000011148981)

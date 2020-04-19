@@ -12,6 +12,8 @@
 - HTTP 的请求方法有哪些？GET和POST区别？
 - webSocket
 - Ajax, Fetch, Axios
+- TCP和UDP的区别
+- XSS和CSRF
 
 ## http1.x、http2、http3
 
@@ -251,6 +253,17 @@ axios是对原生 XHR的封装，基于Promise的http库，适用于浏览器和
 - 自动转化json数据
 
 更多使用可以直接查阅 [axios文档](https://github.com/axios/axios)
+## TCP和UDP的区别
+TCP
+- 可靠：消息确定要收到，发送失败，会重新传输
+- 有序： 每个数据包都有编号
+UDP
+- 消息不确定收到，可能丢包
+- 无序的
+
+TCP中有很复杂的逻辑，UDP比TCP的性能好。
+
+- [TCP和UDP的区别](https://zhuanlan.zhihu.com/p/24860273)
 
 ## 相关文章推荐
 - [关于网络请求的面试题总结](https://zhuanlan.zhihu.com/p/32565654)
