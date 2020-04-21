@@ -33,3 +33,60 @@
 [「中高级前端」窥探数据结构的世界- ES6版](https://juejin.im/post/5cd1ab3df265da03587c142a)
 [【周刊-2】三年大厂面试官-前端面试题（偏难）](https://juejin.im/post/5cb0315f518825215e61ec14)
 [周刊-1】三年大厂面试官-面试题精选及答案](https://juejin.im/post/5ca9de22e51d452b5372ed90#heading-9)
+
+
+## https://juejin.im/post/5e61c161518825493e5353d1
+
+webpack的劣势在哪里
+技术选型上为什么选择vue，vue有哪些缺陷
+是如何进行code review的，这里讲了持续化集成
+js的基础类型(这个脑子短路了，给忘了)
+webpack针对模块化做的处理
+是如何保证组件库的质量的
+
+
+
+了解websocket吗，websocket是如何进行握手的
+生产消费者模式
+
+线程和进程(腾讯二面又问我了，我又没回答出来，哈哈)
+如何批量抓取文章
+如何处理ios键盘挡住屏幕，ios输入的时候光标定位错乱
+virtual dom的优势在哪儿
+了解xpath吗
+客户端和fe是如何通信的，客户端是如何操作fe的代码的
+性能优化能从哪些方面入手
+前端如何实现图片剪裁
+
+
+webAssembly了解吗，讲一下
+
+算法题: 有一个无序数组求中位数
+网络协议一共有几层，能具体讲讲他们的协议吗
+了解HTTP3吗，HTTP3做了哪些优化
+了解Vue3吗，相对于Vue2做了哪些优化
+    - 压缩包体积更小, 当前最小化并被压缩的 Vue 运行时大小vue2.x 20kb, vue3.0 10kb
+    - Object.defineProperty -> proxy
+    - Virtual DOM 重构
+    - function base api
+[vue进阶之路 —— vue3.0新特性](https://zhuanlan.zhihu.com/p/92143274)
+
+
+谈谈对pwa的理解
+在Vue渲染组件的时候，都是从父到子组件再到父组件，如果你是框架的设计者，你会怎么做
+了解v8引擎吗，一段js代码如何执行的
+    - 
+[认识 V8 引擎](https://zhuanlan.zhihu.com/p/27628685)
+
+
+如何批量引入组件，require.context
+组件之间如何通信
+问了监控系统，如何计算白屏时间和首屏渲染时间的，如何进行数据上报的，上报到监控系统展示是怎样的一个过程
+问了一个$listener和$attr，但是我当初没有get到面试官的点
+谈谈pwa
+vuex的工作流(工作流是什么？)
+知道function component吗
+如何选择图片格式，例如png,webp
+
+
+
