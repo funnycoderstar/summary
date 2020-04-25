@@ -35,3 +35,30 @@ DOM树渲染
     - 图片懒加载
     - 音视频走流文件
 - 缓存： DNS缓存，304缓存
+- 减少回流和重绘
+
+回流和重绘
+
+回流：元素的大小或者位置发生了变化（当页面布局和几何信息发生变化的时候，触发了重新布局导致渲染树重新渲染）
+重绘：元素样式的改变（但宽高，大小、位置等不变），如 visibility， color，outline
+
+避免DOM的回流：
+- 放弃传统操作DOM的时代，使用vue/react
+- 分离读写
+```js
+// 批量更新队列，
+box.style.width = '100px';
+box.style.height = '100px';
+// 获取
+console.log(box.clientWidth);
+```
+- 批量处理
+```js
+box.style.cssText = '100px';
+box.classname = '100px';
+```
+- 缓存处理
+
+## CSS盒模型及box-sizing
+
+CSS中的 box-sizing 属性定义了应该如何计算一个元素的总宽度和总高度

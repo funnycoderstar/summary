@@ -140,3 +140,5 @@ var longestPalindrome = function(s) {
 ## 参考
 - [有什么浅显易懂的Manacher Algorithm讲解？](https://www.zhihu.com/question/37289584?sort=created)
 - [leetcode官方题解](https://leetcode-cn.com/problems/longest-palindromic-substring/solution/5-zui-chang-hui-wen-zi-chuan-by-alexer-660/)
+
+

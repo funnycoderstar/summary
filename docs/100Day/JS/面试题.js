@@ -178,4 +178,40 @@ const promises = new Promise((resolve, reject) => {
  margin-left: left;
  margin-right: right;
  
- float: right;s
+ float: right;
+
+ // 高度固定，块级元素
+ line-height: 200px;
+ text-align: center;
+
+ // flex
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+ // transform
+ transform: translate(-50%, -50%)
+
+ // position
+ position: absolute;
+ margin: auto;
+ left: 0;
+ top: 0;
+ right: 0;
+ bottom: 0;
+
+
+
+class A {
+
+}
+class B extends A {
+
+}
+
+const b = new B();
+
+
+
+
+ 
