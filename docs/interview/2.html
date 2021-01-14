@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div>
+       <p></p>
+       <p></p>
+       <span></span>
+       <span></span>
+       <span></span>
+       <br/>
+       <h1></h1>
+   </div>
+</body>
+<script>
+    window.onload = function() {
+        const tags = document.getElementsByTagName('*');
+        let map = new Map();
+        let maxStr = '';
+        let max = 0;
+        console.log(tags[0].tagName);
+        for(let i = 0; i < tags.length; i++) {
+            let value = map.get(tags[i].tagName)
+            if(value) {
+                map.set(tags[i].tagName, ++value)
+            } else {
+                map.set(tags[i].tagName, 1);
+            }
+            if(value > max) {
+                maxStr = tags[i].tagName;
+                max = value;
+            }
+        }
+        console.log(`当前最多的标签为${maxStr}，个数为 ${max}` );
+    }
+    
+</script>
+</html>

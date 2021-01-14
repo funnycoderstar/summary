@@ -8,7 +8,7 @@ module.exports = {
     themeConfig: {
         nav: [
             { 
-                text: 'home', 
+                text: '首页', 
                 link: '/'
             },
             {  text: '基础', 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>放大镜</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            #demo {
+                display: block;
+                width: 400px;
+                height: 255px;
+                margin: 50px;
+                position: relative;
+                border: 1px solid #ccc;
+            }
+
+            #small-box {
+                position: relative;
+                z-index: 1;
+            }
+
+            #float-box {
+                display: none;
+                width: 160px;
+                height: 120px;
+                position: absolute;
+                background: #ffffcc;
+                border: 1px solid #ccc;
+                filter: alpha(opacity=50);
+                opacity: 0.5;
+                cursor: move;
+            }
+
+            #mark {
+                position: absolute;
+                display: block;
+                width: 400px;
+                height: 255px;
+                z-index: 10;
+                background: #fff;
+                filter: alpha(opacity=0);
+                opacity: 0;
+                cursor: move;
+            }
+
+            #big-box {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 460px;
+                width: 400px;
+                height: 300px;
+                overflow: hidden;
+                border: 1px solid #ccc;
+                z-index: 1;
+            }
+
+            #big-box img {
+                position: absolute;
+                z-index: 5;
+            }
+        </style>
+        <script>
+            //页面加载完毕后执行
+            window.onload = function() {
+                var objDemo = document.getElementById("demo");
+                var objSmallBox = document.getElementById("small-box");
+                var objMark = document.getElementById("mark");
+                var objFloatBox = document.getElementById("float-box");
+                var objBigBox = document.getElementById("big-box");
+                var objBigBoxImage = objBigBox.getElementsByTagName("img")[0];
+
+                objMark.onmouseover = function() {
+                    objFloatBox.style.display = "block";
+                    objBigBox.style.display = "block";
+                };
+
+                objMark.onmouseout = function() {
+                    objFloatBox.style.display = "none";
+                    objBigBox.style.display = "none";
+                };
+
+                objMark.onmousemove = function(ev) {
+                    //请补充此处鼠标移动时的响应方法
+                    var _event = ev || window.event;  //兼容多个浏览器的event参数模式
+                    var left = _event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth / 2;
+                    var top = _event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight / 2;
+                    if (left < 0) {
+                        left = 0;
+                    } else if (left > (objMark.offsetWidth - objFloatBox.offsetWidth)) {
+                        left = objMark.offsetWidth - objFloatBox.offsetWidth;
+                    }
+                    if (top < 0) {
+                        top = 0;
+                    } else if (top > (objMark.offsetHeight - objFloatBox.offsetHeight)) {
+                        top = objMark.offsetHeight - objFloatBox.offsetHeight;
+                    }
+                    objFloatBox.style.left = left + "px"; 
+                    objFloatBox.style.top = top + "px";
+                    var percentX = left / (objMark.offsetWidth - objFloatBox.offsetWidth);
+                    var percentY = top / (objMark.offsetHeight - objFloatBox.offsetHeight);
+                    objBigBoxImage.style.left = -percentX * (objBigBoxImage.offsetWidth - objBigBox.offsetWidth) + "px";
+                    objBigBoxImage.style.top = -percentY * (objBigBoxImage.offsetHeight - objBigBox.offsetHeight) + "px";
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <div id="demo">
+            <div id="small-box">
+                <div id="mark"></div>
+                <div id="float-box"></div>
+                <img
+                    src="http://img.mukewang.com/537d77fb0001559d04000255.jpg"
+                />
+            </div>
+            <div id="big-box">
+                <img
+                    src="http://img.mukewang.com/537d781b0001c04210240654.jpg"
+                />
+            </div>
+        </div>
+    </body>
+</html>

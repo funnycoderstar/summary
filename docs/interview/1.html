@@ -16,36 +16,101 @@
     
   </div>
   <script> 
-    let count = 1;
-    let wrap = document.getElementById('wrap');
+//     let count = 1;
+//     let wrap = document.getElementById('wrap');
 
-    function getUserAction(e) {
-      console.log(e);
-      wrap.innerHTML = count++;
-    };
-    function throttle(fn, wait)  {
-    // 记录上一次执行的时间戳
-    let previous = 0;
-    // 设置一个定时器
-    let timer = null;
-    return function(...args) {
-        // 当前的时间戳，然后减去之前的时间戳，大于设置的时间间隔
-        if(Date.now() - previous > wait) {
-            clearTimeout(timer);
-            timer = null
-            // 更新上一次的时间戳为当前时间戳
-            previous = Date.now();
-            fn.apply(this, args);
-        } else if(!timer) {
-            // 设置下一个定时器
-            timer = setTimeout(() => {
-                timer = null;
-                fn.apply(this, args)
-            }, wait)
+//     function getUserAction(e) {
+//       console.log(e);
+//       wrap.innerHTML = count++;
+//     };
+//     function throttle(fn, wait)  {
+//     // 记录上一次执行的时间戳
+//     let previous = 0;
+//     // 设置一个定时器
+//     let timer = null;
+//     return function(...args) {
+//         // 当前的时间戳，然后减去之前的时间戳，大于设置的时间间隔
+//         if(Date.now() - previous > wait) {
+//             clearTimeout(timer);
+//             timer = null
+//             // 更新上一次的时间戳为当前时间戳
+//             previous = Date.now();
+//             fn.apply(this, args);
+//         } else if(!timer) {
+//             // 设置下一个定时器
+//             timer = setTimeout(() => {
+//                 timer = null;
+//                 fn.apply(this, args)
+//             }, wait)
+//         }
+//     }
+// }
+//     wrap.onmousemove = throttle(getUserAction, 1000);
+function deepCopy(originObj, map = new WeakMap()) {
+    // 判断是否为基本数据类型
+    if(isObject(originObj)) {
+        // 判断是否为循环引用
+        if(map.get(originObj)) {
+            return map.get(originObj);
         }
+       
+        // 判断是否为几种特殊需要处理的类型
+        let type = [Date, RegExp, Set, Map, WeakMap, WeakSet];
+        if(type.includes(originObj.constructor)) {
+            return new originObj.constructor(originObj);
+        }
+        // 其他类型
+        let allDesc = Object.getOwnPropertyDescriptors(originObj);
+        let cloneObj = Object.create(Object.getPrototypeOf(originObj), allDesc);
+
+        // Reflect.ownKeys 可以获取到
+        for(const prop of Reflect.ownKeys(originObj)) {
+            cloneObj[prop] = isObject(originObj[prop]) && typeof originObj[prop] !== 'function' ? deepCopy(originObj[prop], map) : originObj[prop];
+        }
+        return cloneObj;
+    } else {
+        return originObj;
     }
 }
-    wrap.onmousemove = throttle(getUserAction, 1000);
+
+// 是否为引用类型
+function isObject(obj) {
+    return typeof obj === 'object' || typeof obj === 'function' && obj !== null;
+}
+
+let obj = {
+    fun: function(){},
+    syb: Symbol('foo'),
+    a: undefined,
+    b: NaN,
+    c: Infinity,
+    reg : /^abc$/,
+    date: new Date(),
+    set: new Set([1, 2, 3, 4, 4]),
+    map: new Map([
+        ['name', '张三'],
+        ['title', 'Author']
+      ]),
+    text:'aaa',
+}
+let cloneObj = deepCopy(obj);
+console.log(cloneObj);
+
+function Person(name, age) {
+    // 显式创建对象
+    const obj = new Object();
+    // 直接给对象进行赋值
+    obj.name = name;
+    obj.age = age;
+    obj.sayName = function() {
+        console.log(obj.name);
+    }
+    // 最后 return 该对象
+    return obj;
+}
+
+const person1 = Person('litterstar', 18);
+console.log(person1.constructor);
   </script>
 </body>
 

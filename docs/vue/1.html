@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <a onclick="push('/a')">a</a>
+        <br/>
+        <a onclick="push('/b')">b</a>
+    </div>
+    <script>
+        function push(path) {
+            history.pushState(
+                {p: path}, // 当页面切换的时候需要知道是哪个路径
+                null,
+                path,
+            )
+        }
+        // 监听路径的变化,
+        window.addEventListener('popstate', (e) => {
+            console.log(history.length);
+            console.log(e);
+        })
+    </script>
+</body>
+</html>
